@@ -1,3 +1,7 @@
+
+
+
+
 <html>
 <body>
  
@@ -36,7 +40,7 @@
 
 		<tr>
 			
-			<td><button type="submit" formaction="../index.php">Back to Home</button></td>
+			<td><button formaction="../index.php">Back to Home</button></td>
 			
 			<td align="right"><input type="submit" name="confirm" value="Confirm" /></td>
 		</tr>
@@ -48,26 +52,26 @@
 </body>
 </html>
 
-
 <?php
-	if($_SERVER['REQUEST_METHOD']=="POST")
-	{
-		$pass = $_POST['password'];
-		$cpass = $_POST['cpassword'];
-		var_dump($_GLOBALS);
-		if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) 
-		{
-			if($pass==$cpass)
-			{
-				$xml = simplexml_load_file("../data.xml");
-				$xml->addChild("user", "");
-				$pos = count($xml->user)-1;
-				
-				$xml->user[$pos]->addChild("email", $_POST['email']);
-				$xml->user[$pos]->addChild("password", $_POST['password']);
-				$xml->asXML("../data.xml");
-			}
-		} 	
-	}
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+    $pass = $_POST['password'];
+    $cpass = $_POST['cpassword'];
+
+    var_dump($_POST);
+    if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))
+    {
+        if($pass==$cpass)
+        {
+            $xml = simplexml_load_file("../data.xml");
+            $xml->addChild("user", "");
+            $pos = count($xml->user)-1;
+
+            $xml->user[$pos]->addChild("email", $_POST['email']);
+            $xml->user[$pos]->addChild("password", $_POST['password']);
+            $xml->asXML("../data.xml");
+        }
+    }
+}
 
 ?>

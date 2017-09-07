@@ -1,3 +1,34 @@
+<?php
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+    $users = simplexml_load_file("./data.xml");
+
+    $flag=false;
+    $count=0;
+
+
+    foreach($users->user as $user)
+    {
+        if($user->email==$_POST['email'])
+        {
+            $flag=true;
+            break;
+        }
+        $count = $count+1;
+    }
+
+    if($flag)
+    {
+        if($users->user[$count]->password==$_POST['password'])
+            header("Location: ./App/TutorDashBoard.php");
+
+    }
+
+}
+
+?>
+
+
 <html>
 
 <body>
@@ -37,7 +68,7 @@
 
                 <td>
                     <br/>
-                    <button type="submit">Log in</button>
+                    <button>Log in</button>
 
                 </td>
 
@@ -46,7 +77,7 @@
             <tr>
                 <td></td>
                 <td align="center">
-                    <a href="App/Registration.php">not registered yet</a>
+                    <a href="./App/Registration.php">not registered yet</a>
                 </td>
             </tr>
 
@@ -64,7 +95,7 @@
     <br/>
 
     <div align="center">
-        <button class="button" type="submit" formaction="./App/search.php">Search</button>
+        <button class="button" type="submit" formaction="./App/SearchResult.php">Search</button>
     </div>
     <br/>
 
@@ -154,31 +185,3 @@
 
 </html>
 
-<?php
-if($_SERVER['REQUEST_METHOD']=="POST")
-{
-    $users = simplexml_load_file("./data.xml");
-
-    $flag=false;
-    $count=0;
-
-    foreach($users->user as $user)
-    {
-        if($user->email==$_POST['email'])
-        {
-            $flag=true;
-            break;
-        }
-        $count = $count+1;
-    }
-
-    if($flag)
-    {
-        if($users->user[$count]->password==$_POST['password'])
-            header("Location:./App/TutorDashBoard.php");
-
-    }
-
-}
-
-?>
