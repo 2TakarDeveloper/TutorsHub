@@ -1,27 +1,17 @@
 <?php
+require_once("./service/data_access.php");
+require_once "./service/TutorService.php";
+
+
+?>
+
+<?php
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
-    $users = simplexml_load_file("./data.xml");
 
-    $flag=false;
-    $count=0;
-
-
-    foreach($users->user as $user)
+    if(ValidTutor($_POST['email'],$_POST['password']))
     {
-        if($user->email==$_POST['email'])
-        {
-            $flag=true;
-            break;
-        }
-        $count = $count+1;
-    }
-
-    if($flag)
-    {
-        if($users->user[$count]->password==$_POST['password'])
-            header("Location: ./App/TutorDashBoard.php");
-
+        header("Location: ./App/TutorDashBoard.php");
     }
 
 }
