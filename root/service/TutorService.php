@@ -7,7 +7,7 @@
 function NewTutor($tutor){
     //this function will take a tutor object and add that to database
 
-    $sql = "INSERT INTO user(Email, Password, MemberSince) VALUES('$tutor->email','$tutor->password', '$tutor->membersince')";
+    $sql = "INSERT INTO user(Email, Password, MemberSince) VALUES('$tutor[email]','$tutor[password]', '$tutor[membersince]')";
     $result = executeSQL($sql);
 
     return $result;
@@ -18,7 +18,7 @@ function UpdateTutor($tutor){
     //Update Key=tutorID;
     //this function will take a tutor object and update that in the database
 
-    $sql = "UPDATE user SET Name='$tutor->name', UserImage='$tutor->image' WHERE Id=$tutor->id";
+    $sql = "UPDATE user SET Name='$tutor[name]', UserImage='$tutor[image]' WHERE Id=$tutor[id]";
     $result = executeSQL($sql);
 
 
