@@ -23,7 +23,7 @@
         return $result;
     }
     function getTutor($personName){
-        $sql = "SELECT * FROM user,searchinfo WHERE user.id=searchinfo.UserId and searchinfo.PreferredLocation='$tutor[location]' and searchinfo.PreferredClasses='$tutor[classes]', searchinfo.PreferredMedium='$tutor[medium]' and  searchinfo.PreferredSubjects LIKE '%$tutor[subjects]%' and searchinfo.ExpectedSalary between $tutor[minSalary] and $tutor[maxSalary]";
+        $sql = "SELECT * FROM user,searchinfo WHERE user.id=searchinfo.UserId and searchinfo.PreferredLocation='$tutor[location]' and searchinfo.Gender='$tutor[gender]' and searchinfo.PreferredClasses='$tutor[classes]', searchinfo.PreferredMedium='$tutor[medium]' and  searchinfo.PreferredSubjects LIKE '%$tutor[subjects]%' and searchinfo.ExpectedSalary between $tutor[minSalary] and $tutor[maxSalary]";
         $result = executeSQL($sql);
         
         $tutors = array();
