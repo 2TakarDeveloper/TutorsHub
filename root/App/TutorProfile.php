@@ -44,8 +44,18 @@ $medium=$tutorSearchInfo['PrefferedMedium'];
 
 $class=$tutorSearchInfo['PrefferedClasses'];
 $subject=$tutorSearchInfo['PrefferedSubjects'];
-$availability=$tutorSearchInfo['Availability'];
 $gender=$tutorSearchInfo['Gender'];
+
+//$availability=$tutorSearchInfo['Availability'];
+
+if($tutorSearchInfo['Availability'])
+{
+    $availability="Available";
+}
+else
+{
+    $availability="Not Available";
+}
 
 
 
@@ -78,14 +88,7 @@ $experience=$tutorInfo['Experience'];
 
 $place="Home Visit";
 
-
-$currStatus="Available";
-
 $day=4;
-
-
-
-
 $rating=5;
 
 $qualification1="BSc";
@@ -305,7 +308,7 @@ $dept3="Science";
                             </td>
 
                             <td>
-                                <?php echo $currStatus; ?>
+                                <?php echo $availability; ?>
                             </td>
 
                         </tr>
