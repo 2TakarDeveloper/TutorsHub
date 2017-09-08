@@ -274,8 +274,6 @@ if(!isset($_SESSION["UserId"]))
 
                 </tr>
 
-
-
             </table>
 
 
