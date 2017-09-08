@@ -1,4 +1,8 @@
 <?php
+$contact=false; //for public access contact will be true and there will be a contact window
+?>
+
+<?php
 // Start the session
 session_start();
 
@@ -20,9 +24,6 @@ if(!isset($_SESSION["UserId"]))
 
 <?php
 
-
-$id=15291721;//Remove this shit
-
 //Set Coo
 
 //-----------------------------------------------------
@@ -39,14 +40,20 @@ $activation=$tutor['MemberSince'];;//Member since
 //--------------------------------
 $tutorSearchInfo=getSearchInfo($_SESSION['UserId']);
 $salary=$tutorSearchInfo['ExpextedSalary'];
-$area=$tutorSearchInfo['PrefferedLocation'];
-$medium=$tutorSearchInfo['PrefferedMedium'];
-
-$class=$tutorSearchInfo['PrefferedClasses'];
-$subject=$tutorSearchInfo['PrefferedSubjects'];
 $gender=$tutorSearchInfo['Gender'];
 
-//$availability=$tutorSearchInfo['Availability'];
+
+$areas=$tutorSearchInfo['PrefferedLocation'];
+$area=explode(",",$areas);
+
+$medium=$tutorSearchInfo['PrefferedMedium'];
+
+$classes=$tutorSearchInfo['PrefferedClasses'];
+$class=explode(",",$classes);
+
+$subjects=$tutorSearchInfo['PrefferedSubjects'];
+$subject=explode(",",$subjects);
+
 
 if($tutorSearchInfo['Availability'])
 {
@@ -82,35 +89,6 @@ $experience=$tutorInfo['Experience'];
 //---------------------------------------
 
 
-
-
-
-
-$place="Home Visit";
-
-$day=4;
-$rating=5;
-
-$qualification1="BSc";
-$qualification2="HSC";
-$qualification3="SSC";
-
-$school1="AIUB";
-$school2="Rajshahi Govt. City College";
-$school3="Govt. Laboratory High School";
-
-$year1=2018;
-$year2=2013;
-$year3=2011;
-
-$grade1=3.96;
-$grade2=5.0;
-$grade3=5.0;
-
-$dept1="CSE";
-$dept2="Science";
-$dept3="Science";
-
 ?>
 
 <html>
@@ -129,9 +107,9 @@ $dept3="Science";
         width: 75%;
     <!--overflow:auto;-->
         position: absolute;
-        //float: center;
+        float: center;
         background:lightgray;
-        height:1000px;
+        height:830px;
     }
 
     .left
@@ -166,9 +144,9 @@ $dept3="Science";
     }
 
     h1, h2, h3, h4, h5, h6{
-        margin-top:0;
+        margin-top:0px;
         margin-bottom:1px;
-        padding: 0;
+        padding: 0px;
     }
 
 
@@ -176,6 +154,14 @@ $dept3="Science";
         border: .5px solid lightgray;
         padding: 5px;
     }
+
+    #two td {
+        border: .5px solid-lightgray;
+        padding: 5px;
+        text-align: center;
+    }
+
+
 
     .button
     {
@@ -204,12 +190,12 @@ $dept3="Science";
             <table style="width=100%" cellspacing="10">
                 <tr>
                     <td>
-                        <img src=<?php echo $imageUrl; ?> style="width:200px;height:230px;">
+                        <img src=<?php echo $imageUrl; ?>  style="width:200px;height:230px;">
                     </td>
 
                     <td>
                         <h1 style="margin-top:-30px">  <?php echo $name; ?> </h1>
-                        <p style="margin-top: 2px"> <b> ID #<?php echo $id; ?> </b>
+
                         </p>
                         <p> <b>Current Status: </b> <?php echo $status; ?>  </p>
                         <p> <?php echo $bio; ?> </p>
@@ -218,67 +204,12 @@ $dept3="Science";
                 </tr>
 
                 <td  colspan="2">
-                    <p style="margin-top:-20px"> <br> <img src="Resources/call.png" style="width:20px;height:20px;"> +88<?php echo $phone; ?> <img src="Resources/email.jpg" style="width:20px;height:20px;"> <?php echo $mail; ?><img src="Resources/add.png" style="width:20px;height:20px;"> <?php echo $address; ?> </P>
+                    <p style="margin-top:-20px"> <br> <img src="Resources/call.png"  style="width:20px;height:20px;"> +88<?php echo $phone; ?> <img src="Resources/email.jpg"  style="width:20px;height:20px;"> <?php echo $mail; ?> <img src="Resources/add.png"  style="width:20px;height:20px;"> <?php echo $address; ?> </P>
                 </td>
 
             </table>
 
-            <table cellspacing="10">
 
-                <td colspan="2">
-
-                    <table border=10>
-
-                        <h2>
-                            Educational Qualification
-                        </h2>
-                        <br>
-                        <tr>
-                            <th style="text-align:center">Qualification</th>
-                            <th style="text-align:center">School/College/University</th>
-                            <th style="text-align:center">Year of passing</th>
-                            <th style="text-align:center">Grade</th>
-                            <th style="text-align:center">Group/Subject</th>
-
-
-                        </tr>
-
-                        <tr>
-                            <td style="text-align:center"><?php echo $qualification1; ?></td>
-                            <td style="text-align:center"><?php echo $school1; ?></td>
-                            <td style="text-align:center"><?php echo $year1; ?></td>
-                            <td style="text-align:center"><?php echo $grade1; ?></td>
-                            <td style="text-align:center"><?php echo $dept1; ?></td>
-
-
-                        </tr>
-
-                        <tr>
-                            <td style="text-align:center"><?php echo $qualification2; ?></td>
-                            <td style="text-align:center"><?php echo $school2; ?></td>
-                            <td style="text-align:center"><?php echo $year2; ?></td>
-                            <td style="text-align:center"><?php echo $grade2; ?></td>
-                            <td style="text-align:center"><?php echo $dept2; ?></td>
-
-
-                        </tr>
-
-                        <tr>
-                            <td style="text-align:center"><?php echo $qualification3; ?></td>
-                            <td style="text-align:center"><?php echo $school3; ?></td>
-                            <td style="text-align:center"><?php echo $year3; ?></td>
-                            <td style="text-align:center"><?php echo $grade3; ?></td>
-                            <td style="text-align:center"><?php echo $dept3; ?></td>
-
-
-
-                        </tr>
-
-                        </td colspan="2">
-
-                    </table>
-
-            </table>
 
 
             <table cellspacing="10">
@@ -297,7 +228,7 @@ $dept3="Science";
                             </td>
 
                             <td>
-                                <?php echo $salary; ?>tk
+                                <?php echo $salary; ?>tk/hour
                             </td>
 
                         </tr>
@@ -313,27 +244,9 @@ $dept3="Science";
 
                         </tr>
 
-                        <tr>
-                            <td>
-                                Days Per Week:
-                            </td>
 
-                            <td>
-                                <?php echo $day; ?> days
-                            </td>
 
-                        </tr>
 
-                        <tr>
-                            <td>
-                                Place of learning:
-                            </td>
-
-                            <td>
-                                <?php echo $place; ?>
-                            </td>
-
-                        </tr>
 
                         <tr>
                             <td>
@@ -341,8 +254,23 @@ $dept3="Science";
                             </td>
 
                             <td>
-                                <?php echo $medium; ?>
+
+                                <table id="two">
+                                    <tr>
+                                        <td align="center">
+                                            <p> <?php if($medium=="Both" || $medium=="Bangla") echo"&#10004;";?> Bangla </p>
+                                        </td>
+                                        <td align="center">
+                                            <p> <?php if($medium=="Both" || $medium=="English") echo"&#10004;";?> English </p>
+                                        </td>
+
+                                    </tr>
+                                </table>
+
+
+
                             </td>
+
                         </tr>
 
                         <tr>
@@ -351,7 +279,53 @@ $dept3="Science";
                             </td>
 
                             <td>
-                                <?php echo $class; ?>
+                                <table id="two">
+                                    <tr>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==1){ echo "&#10004;"; break;}} ?> Class1 </p>
+                                        </td>
+                                        <td>
+                                        <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==2){ echo "&#10004;"; break;}} ?> Class2 </p>
+                                        </td>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==3){ echo "&#10004;"; break;}} ?> Class3 </p>
+                                        </td>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==4){ echo "&#10004;"; break;}} ?> Class4 </p>
+                                        </td>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==5){ echo "&#10004;"; break;}} ?> Class5 </p>
+                                        </td>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==6){ echo "&#10004;"; break;}} ?> Class6 </p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==7){ echo "&#10004;"; break;}} ?> Class7 </p>
+                                        </td>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==8){ echo "&#10004;"; break;}} ?> Class8 </p>
+                                        </td>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==9){ echo "&#10004;"; break;}} ?> Class9 </p>
+                                        </td>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==10){ echo "&#10004;"; break;}} ?> Class10 </p>
+                                        </td>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==11){ echo "&#10004;"; break;}} ?> Class11 </p>
+                                        </td>
+                                        <td>
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==12){ echo "&#10004;"; break;}} ?> Class12 </p>
+                                        </td>
+
+                                    </tr>
+                                </table>
+
+
+
                             </td>
                         </tr>
 
@@ -361,7 +335,57 @@ $dept3="Science";
                             </td>
 
                             <td>
-                                <?php echo $subject; ?>
+                                <table id="two">
+                                    <tr>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="English"){ echo "&#10004;"; break;}} ?>  English </p>
+                                        </td>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Bangla"){ echo "&#10004;"; break;}} ?> Bangla </p>
+                                        </td>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Physics"){ echo "&#10004;"; break;}} ?> Physics </p>
+                                        </td>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Chemistry"){ echo "&#10004;"; break;}} ?> Chemistry </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Math"){ echo "&#10004;"; break;}} ?>  Math </p>
+                                        </td>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Religion"){ echo "&#10004;"; break;}} ?> Religion </p>
+                                        </td>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="HigherMath"){ echo "&#10004;"; break;}} ?> HigherMath </p>
+                                        </td>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="SocialScience"){ echo "&#10004;"; break;}} ?> SocialScience </p>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="PhysicalExercise"){ echo "&#10004;"; break;}} ?>  PhysicalExercise </p>
+                                        </td>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Career"){ echo "&#10004;"; break;}} ?> Career </p>
+                                        </td>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="ICT"){ echo "&#10004;"; break;}} ?> ICT </p>
+                                        </td>
+                                        <td>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Biology"){ echo "&#10004;"; break;}} ?> Biology </p>
+                                        </td>
+                                    </tr>
+
+
+                                </table>
+
+
+
+
                             </td>
                         </tr>
 
@@ -371,7 +395,13 @@ $dept3="Science";
                             </td>
 
                             <td>
-                                <?php echo $area; ?>
+                                <table id="two">
+                                    <tr>
+                                        <?php for($i=0;$i<sizeof($area);$i++){ echo"<td><p>$area[$i]</p></td>";} ?>
+
+                                    </tr>
+
+                                </table>
                             </td>
                         </tr>
 
@@ -382,6 +412,7 @@ $dept3="Science";
             </table>
 
         </div>
+
         <div class="right">
 
             <table style="margin-top:0px" cellspacing="10">
@@ -398,68 +429,81 @@ $dept3="Science";
                 </td>
             </table>
 
-            <table cellspacing="10">
+            <table  cellspacing="10">
 
+                <tr>
+                    <td>
 
-                <td colspan="2">
+                        <b> Level </b>
 
+                    </td>
 
-                    <h2> Rating </h2>
+                    <td>
 
+                        <p> <?php echo $level; ?> </p>
+                    </td>
 
-
-
-                </td>
-
-                <td colspan="2">
-
-                    <h2> <?php echo $rating; ?> </h2>	<br>
-                    <font size="6"> <?php for($i=0;$i<$rating;$i++)echo "* "; ?></font>
-
-
-
-
-                </td>
-
-
-
-            </table>
-
-            <table cellspacing="10">
+                </tr>
 
 
                 <tr>
 
-                    <td colspan="2">
-                        <h2>
-                            Contact this Tutor
-                        </h2>
 
-                        <table>
+                    <td>
 
+                        <b> Experience </b>
 
-                            <tr>
-                                <td colspan="2">
-                                    <b> Name <b> <br> <input type="text" name="name" size="35"> <br/>
-                                            <b> Phone No <b> <br> <input type="text" name="phone" size="35"> <br/>
-                                                    <b> Email <b> <br> <input type="text" name="email" size="35"> <br/>
-                                                            <b> Message <b> <br> <input type="text" name="message" size="35" style="height: 60px;"> <br/>								<br>
-                                                                    <button type="button" class="button" >Send Message</button>
+                    </td>
 
-                                </td>
+                    <td>
 
-
-                            </tr>
-
-                        </table>
-
+                        <p> <?php echo $experience; ?> </p>
+                    </td>
                 </tr>
-                </td>
+
+
 
             </table>
 
-        </div>
+            <?php
+            if($search)
+            {
+                echo '<table cellspacing="10">
+				
+							
+					<tr>
+						
+						<td colspan="2">
+						<h2> 
+							Contact this Tutor
+						</h2>
+						
+						<table>
+							
+							
+							<tr>
+								<td colspan="2">
+									<b> Name <b> <br> <input type="text" name="fname" size="35"> <br>
+									<b> Phone No <b> <br> <input type="text" name="fname" size="35"> <br>
+									<b> Email <b> <br> <input type="text" name="fname" size="35"> <br>
+									<b> Message <b> <br> <textarea name="Text1" cols="37" rows="5"></textarea> <br>								<br>
+									<button type="button" class="button" >Send Message</button>
+									
+								</td>
+								
+								
+							</tr>
+	
+						</table>
+						
+					</tr>					
+					</td>
+				
+			</table>';
+            }
+            ?>
 
+        </div>
     </div>
 </div>
 
