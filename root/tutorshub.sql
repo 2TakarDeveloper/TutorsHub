@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2017 at 05:15 PM
+-- Generation Time: Sep 08, 2017 at 06:20 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -23,6 +23,91 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `tutorshub` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `tutorshub`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bangla`
+--
+
+CREATE TABLE IF NOT EXISTS `bangla` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `biology`
+--
+
+CREATE TABLE IF NOT EXISTS `biology` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `career`
+--
+
+CREATE TABLE IF NOT EXISTS `career` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chemistry`
+--
+
+CREATE TABLE IF NOT EXISTS `chemistry` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `english`
+--
+
+CREATE TABLE IF NOT EXISTS `english` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -47,21 +132,106 @@ INSERT INTO `exam` (`SerialNo`, `ExamName`) VALUES
 (7, 'Career'),
 (9, 'Chemistry'),
 (2, 'English'),
-(3, 'Higher Math'),
+(3, 'HigherMath'),
 (6, 'ICT'),
 (11, 'Math'),
-(12, 'Physical Exercise'),
+(12, 'PhysicalExercise'),
 (8, 'Physics'),
 (5, 'Religion'),
-(4, 'Social Science');
+(4, 'SocialScience');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examquestion`
+-- Table structure for table `highermath`
 --
 
-CREATE TABLE IF NOT EXISTS `examquestion` (
+CREATE TABLE IF NOT EXISTS `highermath` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ict`
+--
+
+CREATE TABLE IF NOT EXISTS `ict` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `math`
+--
+
+CREATE TABLE IF NOT EXISTS `math` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `physicalexercise`
+--
+
+CREATE TABLE IF NOT EXISTS `physicalexercise` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `physics`
+--
+
+CREATE TABLE IF NOT EXISTS `physics` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `religion`
+--
+
+CREATE TABLE IF NOT EXISTS `religion` (
   `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
@@ -98,6 +268,23 @@ CREATE TABLE IF NOT EXISTS `searchinfo` (
 
 INSERT INTO `searchinfo` (`SerialNo`, `UserId`, `Gender`, `Availability`, `PrefferedLocation`, `PrefferedSubjects`, `PrefferedClasses`, `PrefferedMedium`, `ExpextedSalary`) VALUES
 (1, 1, 'Male', 1, 'Mirpur,Kalsi', 'Bangla,English', '1,2', 'Both', 20000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `socialscience`
+--
+
+CREATE TABLE IF NOT EXISTS `socialscience` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `Question` varchar(10000) NOT NULL,
+  `A` varchar(100) NOT NULL,
+  `B` varchar(100) NOT NULL,
+  `C` varchar(100) NOT NULL,
+  `D` varchar(100) NOT NULL,
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
