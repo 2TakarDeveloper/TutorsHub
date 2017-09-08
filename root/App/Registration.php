@@ -1,5 +1,31 @@
+<?php require_once("../service/data_access.php") ?>
+<?php require_once("../service/TutorService.php") ?>
 
 
+<?php
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+    $pass = $_POST['password'];
+    $cpass = $_POST['cpassword'];
+
+
+    if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))
+    {
+        if($pass==$cpass)
+        {
+            $tutor['email']=$_POST['email'];
+            $tutor['password']=$_POST['password'];
+            $tutor['membersince']=date_create('now')->format('Y-m-d');
+
+            //Set a method to sent back to home page if fail give error msg
+            if(NewTutor($tutor)){
+                header('../index.php');
+            }
+        }
+    }
+}
+
+?>
 
 
 <html>
@@ -52,26 +78,3 @@
 </body>
 </html>
 
-<?php
-if($_SERVER['REQUEST_METHOD']=="POST")
-{
-    $pass = $_POST['password'];
-    $cpass = $_POST['cpassword'];
-
-    var_dump($_POST);
-    if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))
-    {
-        if($pass==$cpass)
-        {
-            $xml = simplexml_load_file("../data.xml");
-            $xml->addChild("user", "");
-            $pos = count($xml->user)-1;
-
-            $xml->user[$pos]->addChild("email", $_POST['email']);
-            $xml->user[$pos]->addChild("password", $_POST['password']);
-            $xml->asXML("../data.xml");
-        }
-    }
-}
-
-?>

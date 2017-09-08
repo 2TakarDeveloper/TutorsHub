@@ -1,4 +1,10 @@
 <?php
+// Start the session
+session_start();
+?>
+
+
+<?php
 require_once("./service/data_access.php");
 require_once "./service/TutorService.php";
 

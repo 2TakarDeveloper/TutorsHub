@@ -1,6 +1,25 @@
 <?php
+// Start the session
+session_start();
 
-	$mail="noushin@gmail.com";
+var_dump($_SESSION);
+
+if(!isset($_SESSION["UserId"]))
+{
+    header("Location: ../index.php");
+}
+
+?>
+
+<?php require_once("../service/data_access.php") ?>
+<?php require_once("../service/TutorService.php") ?>
+
+
+<?php
+
+    $tutor=getTutorbyId($_SESSION['UserId']);
+
+	$mail=$tutor['Email'];
 ?>
 <html>
 

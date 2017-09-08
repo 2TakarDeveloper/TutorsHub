@@ -1,3 +1,17 @@
+<?php
+// Start the session
+session_start();
+
+var_dump($_SESSION);
+
+if(!isset($_SESSION["UserId"]))
+{
+    header("Location: ../index.php");
+}
+
+?>
+
+
 <html>
 <style>
 
@@ -340,21 +354,21 @@ input, label
 									
 									
 										 <tr>
-											 <td><input type="checkbox" name="one" value="bangla">class 1</td>
-											 <td><input type="checkbox" name="two" value="english">class 2</td>
-											 <td><input type="checkbox" name="three" value="math">class 3</td>
-											 <td><input type="checkbox" name="four" value="ict">class 4</td>
-											 <td><input type="checkbox" name="five" value="bangla">class 5</td>
-											 <td><input type="checkbox" name="six" value="math">class 6</td>
+											 <td><input type="checkbox" name="1" value="1">class 1</td>
+											 <td><input type="checkbox" name="2" value="2">class 2</td>
+											 <td><input type="checkbox" name="3" value="3">class 3</td>
+											 <td><input type="checkbox" name="4" value="4">class 4</td>
+											 <td><input type="checkbox" name="5" value="5">class 5</td>
+											 <td><input type="checkbox" name="6" value="6">class 6</td>
 										</tr>	 
 											
 										<tr>	
-											 <td><input type="checkbox" name="seven" value="ict">class 7</td>
-											 <td><input type="checkbox" name="eight" value="bangla">class 8</td>
-											 <td><input type="checkbox" name="nine" value="ict">class 9</td>
-											 <td><input type="checkbox" name="ten" value="bangla">class 10</td>
-											 <td><input type="checkbox" name="eleven" value="bangla">class 11</td>
-											 <td><input type="checkbox" name="twelve" value="bangla">class 12</td>
+											 <td><input type="checkbox" name="7" value="7">class 7</td>
+											 <td><input type="checkbox" name="8" value="8">class 8</td>
+											 <td><input type="checkbox" name="9" value="9">class 9</td>
+											 <td><input type="checkbox" name="10" value="10">class 10</td>
+											 <td><input type="checkbox" name="11" value="11">class 11</td>
+											 <td><input type="checkbox" name="12" value="12">class 12</td>
 											 
 										</tr>
 										

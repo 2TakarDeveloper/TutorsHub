@@ -31,7 +31,14 @@ function ValidTutor($email,$password){
 
     $sql = "SELECT * FROM user where Email='$email' AND Password='$password'";
     $result = executeSQL($sql);
-    //Create new session
+
+    $row=mysqli_fetch_assoc($result);
+
+    if($result){
+        //Create new session
+
+        $_SESSION["UserId"] = $row['Id'];
+    }
     return $result;
 }
 
@@ -46,7 +53,19 @@ function getTutorImage($tutorID){
     return $tutorImage;
 }
 
+function getTutorbyId($tutorId){
+
+    $sql = "SELECT * FROM user where Id=$tutorId";
+    $result = executeSQL($sql);
+
+    $row=mysqli_fetch_assoc($result);
+
+    return $row;
+}
+
 
 ?>
+
+
 
 

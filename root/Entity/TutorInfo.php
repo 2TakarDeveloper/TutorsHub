@@ -13,7 +13,7 @@ class TutorInfo
 {
     //Should be in xml
     //File should be saved using userID
-    //This is extended information for tutors
+    var $tutorId;
     var $mobileNumber;
     var $address;
     var $currentStatus;//This holds the info about where he currently working/Studying.

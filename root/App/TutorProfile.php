@@ -1,24 +1,91 @@
 <?php
-$name="Samiul Haque Shovon";
-$id=15291721;
-$status="Last year Student @AIUB";
-$bio="Beside doing my study I also do some tutions. I already give tution to many students. I do tution with great 
-						care and can deal with my responsibilty!";
+// Start the session
+session_start();
 
-$phone="01758135197";
-$mail="s.h.shovon@gmail.com";
-$address="Rajshahi, Bangladesh";
-$salary=5000;
-$currStatus="Available";
-$day=4;
+var_dump($_SESSION);
+
+if(!isset($_SESSION["UserId"]))
+{
+    header("Location: ../index.php");
+}
+
+?>
+
+
+<?php require_once("../service/data_access.php") ?>
+<?php require_once("../service/TutorService.php") ?>
+<?php require_once("../service/TutorInfoService.php") ?>
+<?php require_once("../service/SearchInfoService.php") ?>
+
+
+<?php
+
+
+$id=15291721;//Remove this shit
+
+//Set Coo
+
+//-----------------------------------------------------
+$tutor=getTutorbyId($_SESSION["UserId"]);
+$name=$tutor['Name'];
+$mail=$tutor['Email'];
+$imageUrl="Resources/a.jpg";//set later
+$activation=$tutor['MemberSince'];;//Member since
+//--------------------------------
+
+
+
+
+//--------------------------------
+$tutorSearchInfo=getSearchInfo($_SESSION['UserId']);
+$salary=$tutorSearchInfo['ExpextedSalary'];
+$area=$tutorSearchInfo['PrefferedLocation'];
+$medium=$tutorSearchInfo['PrefferedMedium'];
+
+$class=$tutorSearchInfo['PrefferedClasses'];
+$subject=$tutorSearchInfo['PrefferedSubjects'];
+$availability=$tutorSearchInfo['Availability'];
+$gender=$tutorSearchInfo['Gender'];
+
+
+
+//----------------------------------
+
+
+
+//--------------------------------------
+
+$tutorInfo=GetTutorInfo($_SESSION['UserId']);
+$status=$tutorInfo['CurrentStatus'];
+$bio=$tutorInfo['Bio'];
+
+$phone=$tutorInfo['MobileNo'];
+
+$address=$tutorInfo['Address'];
+
+$log=$tutorInfo['LastLogin'];
+
+$level=$tutorInfo['Level'];
+$experience=$tutorInfo['Experience'];
+
+
+//---------------------------------------
+
+
+
+
+
+
 $place="Home Visit";
-$medium="Bangla";
-$class="VII,VIII,IX,X,XI,XII";
-$subject="Sciene, Math, English";
-$area="Mirpur,Mohammadpur,Dhanmondi";
 
-$log="00:09:45";
-$activation="04-August-2013";
+
+$currStatus="Available";
+
+$day=4;
+
+
+
+
 $rating=5;
 
 $qualification1="BSc";
@@ -134,7 +201,7 @@ $dept3="Science";
             <table style="width=100%" cellspacing="10">
                 <tr>
                     <td>
-                        <img src="Resources/a.jpg" style="width:200px;height:230px;">
+                        <img src=<?php echo $imageUrl; ?> style="width:200px;height:230px;">
                     </td>
 
                     <td>
