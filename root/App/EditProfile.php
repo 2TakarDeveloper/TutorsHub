@@ -101,9 +101,13 @@ if(!isset($_SESSION["UserId"]))
                     </td>
 
                     <td>
-                        <img id="blah" alt="your image" width="140" height="120" />
-                        <br>
-                        <input type="file" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+
+                        <!-- Image url -->
+
+                        <img id="image" src="https://www.gapyear.com/member_images/default_set/no-image.gif" image" width="150" height="150" />
+                        <br><br>
+                        <label> Image URL </label><input type="text" id="text">
+                        <button id="clickme" >View</button>
 
 
                     </td>
