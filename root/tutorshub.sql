@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2017 at 07:21 AM
+-- Generation Time: Sep 09, 2017 at 05:40 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -253,11 +253,11 @@ CREATE TABLE IF NOT EXISTS `searchinfo` (
   `UserId` int(11) NOT NULL,
   `Gender` varchar(20) DEFAULT NULL,
   `Availability` tinyint(1) DEFAULT NULL,
-  `PrefferedLocation` varchar(300) DEFAULT NULL,
-  `PrefferedSubjects` varchar(300) DEFAULT NULL,
-  `PrefferedClasses` varchar(300) DEFAULT NULL,
-  `PrefferedMedium` varchar(50) DEFAULT NULL,
-  `ExpextedSalary` double DEFAULT NULL,
+  `PreferredLocation` varchar(300) DEFAULT NULL,
+  `PreferredSubjects` varchar(300) DEFAULT NULL,
+  `PreferredClasses` varchar(300) DEFAULT NULL,
+  `PreferredMedium` varchar(50) DEFAULT NULL,
+  `ExpectedSalary` double DEFAULT NULL,
   PRIMARY KEY (`SerialNo`),
   KEY `UserId` (`UserId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -266,8 +266,8 @@ CREATE TABLE IF NOT EXISTS `searchinfo` (
 -- Dumping data for table `searchinfo`
 --
 
-INSERT INTO `searchinfo` (`SerialNo`, `UserId`, `Gender`, `Availability`, `PrefferedLocation`, `PrefferedSubjects`, `PrefferedClasses`, `PrefferedMedium`, `ExpextedSalary`) VALUES
-(1, 1, 'Male', 1, 'Mirpur,Kalsi', 'Bangla,English', '1,2', 'Bangla', 20000);
+INSERT INTO `searchinfo` (`SerialNo`, `UserId`, `Gender`, `Availability`, `PreferredLocation`, `PreferredSubjects`, `PreferredClasses`, `PreferredMedium`, `ExpectedSalary`) VALUES
+(1, 1, 'Female', 1, 'Mirpur,Pallabi', 'Bangla,English', '1,2,3', 'Bangla', 20000);
 
 -- --------------------------------------------------------
 
@@ -309,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`Id`, `Name`, `Email`, `Password`, `UserImage`, `MemberSince`, `UserType`) VALUES
-(1, 'RKO', 'a@a.com', 'a', NULL, '2017-09-07', 'Tutor'),
+(1, 'Tushar', 'a@a.com', 'a', '1', '2017-09-07', 'Tutor'),
 (2, NULL, 'b@b.com', 'b', NULL, '2017-09-07', 'Tutor'),
 (4, NULL, 'tazimtazim2012@gmail.com', '1', NULL, '2017-09-08', 'Tutor');
 
@@ -361,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `userinfo` (
 --
 
 INSERT INTO `userinfo` (`SerialNo`, `TutorId`, `MobileNo`, `Address`, `CurrentStatus`, `Bio`, `LastLogin`, `Level`, `Experience`) VALUES
-(1, 1, '01740072214', 'Dhaka', 'AIUB', 'I\'m a student', '2017-09-08 00:00:00', 1, 1);
+(1, 1, '01740072214', 'Dhaka', 'AIUB', '', '2017-09-09 15:53:59', 1, 1);
 
 --
 -- Constraints for dumped tables
