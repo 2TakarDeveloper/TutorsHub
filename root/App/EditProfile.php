@@ -1,5 +1,6 @@
 <?php
-// Start the session
+
+
 session_start();
 
 var_dump($_SESSION);
@@ -8,6 +9,9 @@ if(!isset($_SESSION["UserId"]))
 {
     header("Location: ../index.php");
 }
+
+$imageUrl="https://www.gapyear.com/member_images/default_set/no-image.gif";
+
 
 ?>
 
@@ -67,6 +71,14 @@ if(!isset($_SESSION["UserId"]))
 
 </style>
 
+<script type="text/javascript">
+    function viewImage()
+    {
+        var newImageSrc=document.getElementById('image_url').value;
+        document.getElementById('image').src=newImageSrc;
+    }
+</script>
+
 
 <body>
 
@@ -104,10 +116,10 @@ if(!isset($_SESSION["UserId"]))
 
                         <!-- Image url -->
 
-                        <img id="image" src="https://www.gapyear.com/member_images/default_set/no-image.gif" image" width="150" height="150" />
+                        <img id="image" src="<?php echo $imageUrl ?>" image" width="150" height="150" />
                         <br><br>
-                        <label> Image URL </label><input type="text" id="text">
-                        <button id="clickme" >View</button>
+                        <label> Image URL </label><input type="text" id="image_url">
+                        <button id="clickme" onclick="viewImage()" >View</button>
 
 
                     </td>
