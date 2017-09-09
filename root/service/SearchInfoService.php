@@ -21,11 +21,11 @@ function NewSearchInfo($searchInfo){
 
 
 
-function UpdateSearchInfo($searchInfo){
+function UpdateSearchInfo($searchInfo,$id){
     //Update Key=tutorID;
     //this function will take a searchInfo object and update that in the database
 
-    $sql = "UPDATE user SET Gender='$searchInfo[gender]', Availability=$searchInfo[availability], PrefferedLocation='$searchInfo[location]', PrefferedSubjects='$searchInfo[subjects]', PrefferedClasses='$searchInfo[classes]', PrefferredMedium='$searchInfo[medium]', ExpextedSalary=$searchInfo[salary]   WHERE UserID=$searchInfo[tutorID]";
+    $sql = "UPDATE searchinfo SET Gender='$searchInfo[Gender]', PrefferedLocation='$searchInfo[PrefferedLocation]', PrefferedSubjects='$searchInfo[PrefferedSubjects]', PrefferedClasses='$searchInfo[PrefferedClasses]', PrefferedMedium='$searchInfo[PrefferedMedium]', ExpextedSalary=$searchInfo[ExpextedSalary]   WHERE UserID=$id";
     $result = executeSQL($sql);
 
 

@@ -1,24 +1,22 @@
 
-
-
 <?php
 
 
 function NewTutor($tutor){
     //this function will take a tutor object and add that to database
 
-    $sql = "INSERT INTO user(Email, Password, MemberSince) VALUES('$tutor[email]','$tutor[password]', '$tutor[membersince]')";
+    $sql = "INSERT INTO user(Email, Password, MemberSince, UserType) VALUES('$tutor[Email]','$tutor[Password]', '$tutor[MemberSince]', 'Tutor')";
     $result = executeSQL($sql);
 
     return $result;
 }
 
 
-function UpdateTutor($tutor){
+function UpdateTutor($tutor,$id){
     //Update Key=tutorID;
     //this function will take a tutor object and update that in the database
 
-    $sql = "UPDATE user SET Name='$tutor[name]', UserImage='$tutor[image]' WHERE Id=$tutor[id]";
+    $sql = "UPDATE user SET Name='$tutor[Name]', Email='$tutor[Email]', UserImage='$tutor[UserImage]' WHERE Id=$id";
     $result = executeSQL($sql);
 
 
@@ -36,8 +34,8 @@ function ValidTutor($email,$password){
 
     if($result){
         //Create new session
-
         $_SESSION["UserId"] = $row['Id'];
+
     }
     return $result;
 }

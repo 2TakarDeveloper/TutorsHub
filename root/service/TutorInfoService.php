@@ -6,7 +6,7 @@ function updateTutorInfo($userInfo,$userId){
     // and save it with UserID The Path is Predefined but do keep an static string variable
     //This will work both as update or new Entry since it always rewrite everything in the file
 
-    $sql = "UPDATE userinfo SET MobileNo='$userInfo[mobileNo]', Address='$userInfo[address]', CurrentStatus='$userInfo[currentStatus]', Bio='$userInfo[bio]' WHERE TutorId=$userId";
+    $sql = "UPDATE userinfo SET MobileNo='$userInfo[MobileNo]', Address='$userInfo[Address]', CurrentStatus='$userInfo[CurrentStatus]', Bio='$userInfo[Bio]' WHERE TutorId=$userId";
     $result = executeSQL($sql);
 
     return $result;

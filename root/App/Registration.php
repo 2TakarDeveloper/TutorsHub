@@ -13,9 +13,9 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     {
         if($pass==$cpass)
         {
-            $tutor['email']=$_POST['email'];
-            $tutor['password']=$_POST['password'];
-            $tutor['membersince']=date_create('now')->format('Y-m-d');
+            $tutor['Email']=$_POST['email'];
+            $tutor['Password']=$_POST['password'];
+            $tutor['MemberSince']=date_create('now')->format('Y-m-d');
 
             //Set a method to sent back to home page if fail give error msg
             if(NewTutor($tutor)){

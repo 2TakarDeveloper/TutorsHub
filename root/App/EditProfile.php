@@ -108,7 +108,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         $tutor['UserImage']=$_POST["imageUrl"];
     }
 
-    UpdateTutor($tutor);//This function is incomplete doesn't include email update do check it.
+    UpdateTutor($tutor,$_SESSION["UserId"]);
 
     //////
 
@@ -135,6 +135,12 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         $userInfo['CurrentStatus']=$_POST["status"];
     }
 
+    //address
+    if(isset($_POST["address"]))
+    {
+        $userInfo['Address']=$_POST["address"];
+    }
+
 
     updateTutorInfo($userInfo,$_SESSION['UserId']);
 
@@ -151,12 +157,12 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
 
 
+
     //medium
     if(isset($_POST["medium"]))
     {
         $searchInfo['PrefferedMedium']=$_POST["medium"];
     }
-    var_dump($medium);
 
     //salary
     if(isset($_POST["salary"]))
@@ -353,9 +359,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
     $searchInfo['PrefferedSubjects']=substr_replace($s, "", -1);
 
-    $searchInfo['UserId']=$_SESSION['UserId'];
-
-    UpdateSearchInfo($searchInfo);
+    UpdateSearchInfo($searchInfo,$_SESSION['UserId']);
 
 }
 
