@@ -466,7 +466,7 @@ $experience=$tutorInfo['Experience'];
             </table>
 
             <?php
-            if($search)
+            if($contact)
             {
                 echo '<table cellspacing="10">
 				
