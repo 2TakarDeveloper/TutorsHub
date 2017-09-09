@@ -1,6 +1,4 @@
 <?php
-
-
 session_start();
 
 var_dump($_SESSION);
@@ -10,10 +8,84 @@ if(!isset($_SESSION["UserId"]))
     header("Location: ../index.php");
 }
 
-$imageUrl="https://www.gapyear.com/member_images/default_set/no-image.gif";
+?>
+
+
+<?php require_once("../service/data_access.php") ?>
+<?php require_once("../service/TutorService.php") ?>
+<?php require_once("../service/TutorInfoService.php") ?>
+<?php require_once("../service/SearchInfoService.php") ?>
+
+
+<?php
+
+//Set Coo
+
+//-----------------------------------------------------
+$tutor=getTutorbyId($_SESSION["UserId"]);
+$name=$tutor['Name'];
+$email=$tutor['Email'];
+$imageUrl=$tutor['UserImage'];
+$activation=$tutor['MemberSince'];//Member since
+//--------------------------------
+
+
+
+
+//--------------------------------
+$tutorSearchInfo=getSearchInfo($_SESSION['UserId']);
+$salary=$tutorSearchInfo['ExpextedSalary'];
+$gender=$tutorSearchInfo['Gender'];
+
+
+$areas=$tutorSearchInfo['PrefferedLocation'];
+$area=explode(",",$areas);
+
+$medium=$tutorSearchInfo['PrefferedMedium'];
+
+$classes=$tutorSearchInfo['PrefferedClasses'];
+$class=explode(",",$classes);
+
+$subjects=$tutorSearchInfo['PrefferedSubjects'];
+$subject=explode(",",$subjects);
+
+
+if($tutorSearchInfo['Availability'])
+{
+    $availability="Available";
+}
+else
+{
+    $availability="Not Available";
+}
+
+
+
+//----------------------------------
+
+
+
+//--------------------------------------
+
+$tutorInfo=GetTutorInfo($_SESSION['UserId']);
+$status=$tutorInfo['CurrentStatus'];
+$bio=$tutorInfo['Bio'];
+
+$phone=$tutorInfo['MobileNo'];
+
+$address=$tutorInfo['Address'];
+
+$log=$tutorInfo['LastLogin'];
+
+$level=$tutorInfo['Level'];
+$experience=$tutorInfo['Experience'];
+
+
+//---------------------------------------
 
 
 ?>
+
 
 
 <html>
@@ -99,17 +171,17 @@ $imageUrl="https://www.gapyear.com/member_images/default_set/no-image.gif";
                 <tr>
                     <td>
                         <label> Name </label>
-                        <input type="text" name="name" size="25" />
+                        <input type="text" name="name" value=<?php echo $name ?> size="25" />
 
                         <label> Email </label>
-                        <input type="text" name="email" size="25" />
+                        <input type="text" name="email" value=<?php echo $email ?> size="25" />
 
 
                         <label> Phone No. </label>
-                        <input type="text" name="phnNo" size="25" />
+                        <input type="text" name="phone" value=<?php echo $phone ?> size="25" />
 
                         <label> Address </label>
-                        <input type="text" name="address" size="25" />
+                        <input type="text" name="address" value=<?php echo $address ?> size="25" />
                     </td>
 
                     <td>
@@ -118,7 +190,7 @@ $imageUrl="https://www.gapyear.com/member_images/default_set/no-image.gif";
 
                         <img id="image" src="<?php echo $imageUrl ?>" image" width="150" height="150" />
                         <br><br>
-                        <label> Image URL </label><input type="text" id="image_url">
+                        <label> Image URL </label><input type="text" id="image_url" value=<?php echo $imageUrl ?>>
                         <button id="clickme" onclick="viewImage()" >View</button>
 
 
@@ -165,7 +237,7 @@ $imageUrl="https://www.gapyear.com/member_images/default_set/no-image.gif";
                     <td>
 
                         <label> Bio </label>
-                        <input  style="height:150px;" type="text" name="bio" size="25" />
+                        <textarea name="bio" cols="27" rows="5"><?php echo $bio ?></textarea>
                         <br>
 
                     </td>
@@ -182,7 +254,7 @@ $imageUrl="https://www.gapyear.com/member_images/default_set/no-image.gif";
                     <label> Currtent Status </label>
 
                     <td>
-                        <input type="text" name="currentStatus" size="25"/>
+                        <input type="text" name="status" value=<?php echo $status ?> size="25"/>
 
                     </td>
 
@@ -337,7 +409,7 @@ $imageUrl="https://www.gapyear.com/member_images/default_set/no-image.gif";
                 <tr>
 
                     <td>
-                        <input type="text" name="gpa" size="20" /> <span> /hour </span>
+                        <input type="text" name="salary" value=<?php echo $salary ?>  size="20" /> <span> /hour </span>
                     </td>
 
 

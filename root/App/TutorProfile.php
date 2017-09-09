@@ -483,10 +483,10 @@ $experience=$tutorInfo['Experience'];
 							
 							<tr>
 								<td colspan="2">
-									<b> Name <b> <br> <input type="text" name="fname" size="35"> <br>
-									<b> Phone No <b> <br> <input type="text" name="fname" size="35"> <br>
-									<b> Email <b> <br> <input type="text" name="fname" size="35"> <br>
-									<b> Message <b> <br> <textarea name="Text1" cols="37" rows="5"></textarea> <br>								<br>
+									<b> Name <b> <br> <input type="text" name="senderName" size="35"> <br>
+									<b> Phone No <b> <br> <input type="text" name="senderPhone" size="35"> <br>
+									<b> Email <b> <br> <input type="text" name="senderEmail" size="35"> <br>
+									<b> Message <b> <br> <textarea name="senderMsg" cols="37" rows="5"></textarea> <br>								<br>
 									<button type="button" class="button" >Send Message</button>
 									
 								</td>

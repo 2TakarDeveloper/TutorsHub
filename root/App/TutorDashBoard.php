@@ -116,7 +116,7 @@ if(!isset($_SESSION["UserId"]))
 			  <button class="dropbtn" style="width:300px;">Profile</button>
 			  <div class="dropdown-content">
 				<a href="TutorProfile.php">View profile</a>
-				<a href="#">Edit profile</a>
+				<a href="EditProfile.php">Edit profile</a>
 				
 				</div>
 			</div>
