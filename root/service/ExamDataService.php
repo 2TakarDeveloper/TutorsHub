@@ -14,25 +14,60 @@ function createNewExamTable($examName){
     //Table creation code goes here
     //Tables will always have the same format SerialNo,Q,A,B,C,D,Ans and serialno is auto increment.
     //if Table creation is a success then call the bellow function
-    AddToExamTable($examName);
-    AddtoUserExamTable($examName);
+
+    $sql="CREATE TABLE IF NOT EXISTS `$examName` (
+    `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+    `Question` varchar(10000) NOT NULL,
+    `A` varchar(100) NOT NULL,
+    `B` varchar(100) NOT NULL,
+    `C` varchar(100) NOT NULL,
+    `D` varchar(100) NOT NULL,
+    `Answer` varchar(100) NOT NULL,
+    PRIMARY KEY (`SerialNo`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
+
+    $result = executeSQL($sql);
+
+    if($result)
+    {
+        AddToExamTable($examName);
+        AddtoUserExamTable($examName);
+    }
+
+    return $result;
 }
 
 
 function AddToExamTable($examName){
     //add a new row to Examtable with the name of the exam
 
+    $sql="INSERT INTO exam(ExamName) VALUES('$examName')";
+    $result = executeSQL($sql);
+
+    return $result;
 }
 
 
 function AddToUserExamTable($examName){
     //Add a new Column to UserExamtable with the name of the exam
+
+    $sql="ALTER TABLE userexaminfo ADD $examName tinyint(1)";
+    $result = executeSQL($sql);
+
+    return $result;
 }
 
 
 
 function GetAllExamNames(){
     //return exam Names from Exam Table
+
+    $sql = "SELECT * FROM exam";
+
+    $result = executeSQL($sql);
+
+    $row=mysqli_fetch_assoc($result);
+    return $row;
 }
 
 
