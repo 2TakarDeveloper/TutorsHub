@@ -1,6 +1,6 @@
-<?php require_once("../data_access.php") ?>
-<?php require_once("../TutorInfoService.php") ?>
-<?php require_once("../SearchInfoService.php") ?>
+<?php require_once("./data_access.php") ?>
+<?php require_once("./TutorInfoService.php") ?>
+<?php require_once("./SearchInfoService.php") ?>
 
 
 <?php
