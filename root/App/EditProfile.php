@@ -21,18 +21,25 @@ if(!isset($_SESSION["UserId"]))
 
 //Set Coo
 
+//
+$c=""; //calsses
+$s=""; //subjects
+$a=""; //areas
+//
+
 //-----------------------------------------------------
+
 $tutor=getTutorbyId($_SESSION["UserId"]);
 $name=$tutor['Name'];
 $email=$tutor['Email'];
 $imageUrl=$tutor['UserImage'];
-$activation=$tutor['MemberSince'];//Member since
-//--------------------------------
-
-
-
 
 //--------------------------------
+
+
+
+//--------------------------------
+
 $tutorSearchInfo=getSearchInfo($_SESSION['UserId']);
 $salary=$tutorSearchInfo['ExpextedSalary'];
 $gender=$tutorSearchInfo['Gender'];
@@ -59,8 +66,6 @@ else
     $availability="Not Available";
 }
 
-
-
 //----------------------------------
 
 
@@ -70,19 +75,270 @@ else
 $tutorInfo=GetTutorInfo($_SESSION['UserId']);
 $status=$tutorInfo['CurrentStatus'];
 $bio=$tutorInfo['Bio'];
-
 $phone=$tutorInfo['MobileNo'];
-
 $address=$tutorInfo['Address'];
-
-$log=$tutorInfo['LastLogin'];
-
-$level=$tutorInfo['Level'];
-$experience=$tutorInfo['Experience'];
-
 
 //---------------------------------------
 
+
+?>
+
+<?php
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+
+    //name
+    if(isset($_POST["name"]))
+    {
+        $name=$_POST["name"];
+    }
+    var_dump($name);
+
+    //email
+    if(isset($_POST["email"]))
+    {
+        $email=$_POST["email"];
+    }
+    var_dump($email);
+
+    //phone no
+    if(isset($_POST["phone"]))
+    {
+        $phone=$_POST["phone"];
+    }
+    var_dump($phone);
+
+    //bio
+    if(isset($_POST["bio"]))
+    {
+        $bio=$_POST["bio"];
+    }
+    var_dump($bio);
+
+    //current status
+    if(isset($_POST["status"]))
+    {
+        $status=$_POST["status"];
+    }
+    var_dump($status);
+
+    //gender
+    if(isset($_POST["gender"]))
+    {
+        $gender=$_POST["gender"];
+    }
+    var_dump($gender);
+
+    //medium
+    if(isset($_POST["medium"]))
+    {
+        $medium=$_POST["medium"];
+    }
+    var_dump($medium);
+
+    //salary
+    if(isset($_POST["salary"]))
+    {
+        $salary=$_POST["salary"];
+    }
+    var_dump($salary);
+
+    //image url
+    if(isset($_POST["imageUrl"]))
+    {
+        $imageUrl=$_POST["imageUrl"];
+    }
+    var_dump($imageUrl);
+
+    //classes
+    if(isset($_POST["1"]))
+    {
+        $c.="1,";
+    }
+    if(isset($_POST["2"]))
+    {
+        $c.="2,";
+    }
+    if(isset($_POST["3"]))
+    {
+        $c.="3,";
+    }
+    if(isset($_POST["4"]))
+    {
+        $c.="4,";
+    }
+    if(isset($_POST["5"]))
+    {
+        $c.="5,";
+    }
+    if(isset($_POST["6"]))
+    {
+        $c.="6,";
+    }
+    if(isset($_POST["7"]))
+    {
+        $c.="7,";
+    }
+    if(isset($_POST["8"]))
+    {
+        $c.="8,";
+    }
+    if(isset($_POST["9"]))
+    {
+        $c.="9,";
+    }
+    if(isset($_POST["10"]))
+    {
+        $c.="10,";
+    }
+    if(isset($_POST["11"]))
+    {
+        $c.="11,";
+    }
+    if(isset($_POST["12"]))
+    {
+        $c.= "12,";
+    }
+
+    $c=substr_replace($c, "", -1);
+    var_dump($c);
+
+
+
+    //areas
+    if(isset($_POST["Adabor"]))
+    {
+        $a.="Adabor,";
+    }
+    if(isset($_POST["Badda"]))
+    {
+        $a.="Badda,";
+    }
+    if(isset($_POST["Dhanmondi"]))
+    {
+        $a.="Dhanmondi,";
+    }
+    if(isset($_POST["Gulshan"]))
+    {
+        $a.="Gulshan,";
+    }
+    if(isset($_POST["Kafrul"]))
+    {
+        $a.="Kafrul,";
+    }
+    if(isset($_POST["Kalabagan"]))
+    {
+        $a.="Kalabagan,";
+    }
+    if(isset($_POST["Khilkhet"]))
+    {
+        $a.="Khilkhet,";
+    }
+    if(isset($_POST["Khilgaon"]))
+    {
+        $a.="Khilgaon,";
+    }
+    if(isset($_POST["Lalbagh"]))
+    {
+        $a.="Lalbagh,";
+    }
+    if(isset($_POST["Mirpur"]))
+    {
+        $a.="Mirpur,";
+    }
+    if(isset($_POST["Mohammadpur"]))
+    {
+        $a.="Mohammadpur,";
+    }
+    if(isset($_POST["NewMarket"]))
+    {
+        $a.= "NewMarket,";
+    }
+    if(isset($_POST["Pallabi"]))
+    {
+        $a.="Pallabi,";
+    }
+    if(isset($_POST["Ramna"]))
+    {
+        $a.="Ramna,";
+    }
+    if(isset($_POST["Paltan"]))
+    {
+        $a.="Paltan,";
+    }
+    if(isset($_POST["Shahbagh"]))
+    {
+        $a.="Shahbagh,";
+    }
+    if(isset($_POST["Tejgaon"]))
+    {
+        $a.="Tejgaon,";
+    }
+    if(isset($_POST["Uttara"]))
+    {
+        $a.= "Uttara,";
+    }
+
+    $a=substr_replace($a, "", -1);
+    var_dump($a);
+
+
+
+    //subjects
+    if(isset($_POST["Bangla"]))
+    {
+        $s.="Bangla,";
+    }
+    if(isset($_POST["English"]))
+    {
+        $s.="English,";
+    }
+    if(isset($_POST["Math"]))
+    {
+        $s.="Math,";
+    }
+    if(isset($_POST["ICT"]))
+    {
+        $s.="ICT,";
+    }
+    if(isset($_POST["HigherMath"]))
+    {
+        $s.="HigherMath,";
+    }
+    if(isset($_POST["SocialScience"]))
+    {
+        $s.="SocialScience,";
+    }
+    if(isset($_POST["Religion"]))
+    {
+        $s.="Religion,";
+    }
+    if(isset($_POST["Physics"]))
+    {
+        $s.="Physics,";
+    }
+    if(isset($_POST["Chemistry"]))
+    {
+        $s.="Chemistry,";
+    }
+    if(isset($_POST["Biology"]))
+    {
+        $s.="Biology,";
+    }
+    if(isset($_POST["PhysicalExcercise"]))
+    {
+        $s.="PhysicalExcercise,";
+    }
+    if(isset($_POST["Career"]))
+    {
+        $s.= "Career,";
+    }
+
+    $s=substr_replace($s, "", -1);
+    var_dump($s);
+
+
+}
 
 ?>
 
@@ -154,7 +410,7 @@ $experience=$tutorInfo['Experience'];
 
 <body>
 
-
+<form method="post">
 <div class="container">
 
     <div class="wrap">
@@ -211,11 +467,11 @@ $experience=$tutorInfo['Experience'];
                 <tr>
 
                     <td>
-                        <input type="radio" name="gender" value="male">
+                        <input type="radio" name="gender" value="Male" <?php if($gender=="Male") echo "checked='checked'"; ?> >
                         Male
                     </td>
                     <td>
-                        <input type="radio" name="gender" value="female">
+                        <input type="radio" name="gender" value="Female" <?php if($gender=="Female") echo "checked='checked'"; ?> >
                         Female
                     </td>
 
@@ -272,17 +528,17 @@ $experience=$tutorInfo['Experience'];
 
 
                     <td>
-                        <input type="radio" name="medium" value="bangla">
+                        <input type="radio" name="medium" value="Bangla" <?php if($medium=="Bangla") echo "checked='checked'"; ?> >
 
 
                         <span> Bangla </span>
                     </td>
                     <td>
-                        <input type="radio" name="medium" value="english">
+                        <input type="radio" name="medium" value="English" <?php if($medium=="English") echo "checked='checked'"; ?> >
                         <span> English </span>
                     </td>
                     <td>
-                        <input type="radio" name="medium" value="both">
+                        <input type="radio" name="medium" value="Both" <?php if($medium=="Both") echo "checked='checked'"; ?> >
                         <span> Both </span>
                     </td>
 
@@ -302,30 +558,30 @@ $experience=$tutorInfo['Experience'];
 
 
                 <tr>
-                    <td><input type="checkbox" name="adabor" value="adabor">Adabor</td>
-                    <td><input type="checkbox" name="badda" value="badda">Badda</td>
-                    <td><input type="checkbox" name="dhanmondi" value="dhanmondi">Dhanmondi</td>
-                    <td><input type="checkbox" name="gulshan" value="gulshan">Gulshan</td>
-                    <td><input type="checkbox" name="kafrul" value="kafrul">Kafrul</td>
-                    <td><input type="checkbox" name="kalabagan" value="kalabagan">Kalabagan</td>
+                    <td><input type="checkbox" name="Adabor" value="Adabor" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Adabor"){ echo "checked='checked'"; break;}} ?> >Adabor</td>
+                    <td><input type="checkbox" name="Badda" value="Badda" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Badda"){ echo "checked='checked'"; break;}} ?> >Badda</td>
+                    <td><input type="checkbox" name="Dhanmondi" value="Dhanmondi" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Dhanmondi"){ echo "checked='checked'"; break;}} ?> >Dhanmondi</td>
+                    <td><input type="checkbox" name="Gulshan" value="Gulshan" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Gulshan"){ echo "checked='checked'"; break;}} ?> >Gulshan</td>
+                    <td><input type="checkbox" name="Kafrul" value="Kafrul" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Kafrul"){ echo "checked='checked'"; break;}} ?> >Kafrul</td>
+                    <td><input type="checkbox" name="Kalabagan" value="Kalabagan" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Kalabagan"){ echo "checked='checked'"; break;}} ?> >Kalabagan</td>
                 </tr>
 
                 <tr>
-                    <td><input type="checkbox" name="khilkhet" value="khilkhet">Khilkhet</td>
-                    <td><input type="checkbox" name="khilgaon" value="khilgaon">Khilgaon</td>
-                    <td><input type="checkbox" name="lalbagh" value="lalbagh">Lalbagh</td>
-                    <td><input type="checkbox" name="mirpur" value="mirpur">Mirpur</td>
-                    <td><input type="checkbox" name="mohammadpur" value="mohammadpur">Mohammadpur</td>
-                    <td><input type="checkbox" name="newmarket" value="newmarket">New Market</td>
+                    <td><input type="checkbox" name="Khilkhet" value="Khilkhet" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Khilkhet"){ echo "checked='checked'"; break;}} ?> >Khilkhet</td>
+                    <td><input type="checkbox" name="Khilgaon" value="Khilgaon" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Khilgaon"){ echo "checked='checked'"; break;}} ?> >Khilgaon</td>
+                    <td><input type="checkbox" name="Lalbagh" value="Lalbagh" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Lalbagh"){ echo "checked='checked'"; break;}} ?> >Lalbagh</td>
+                    <td><input type="checkbox" name="Mirpur" value="Mirpur" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Mirpur"){ echo "checked='checked'"; break;}} ?> >Mirpur</td>
+                    <td><input type="checkbox" name="Mohammadpur" value="Mohammadpur" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Mohammadpur"){ echo "checked='checked'"; break;}} ?> >Mohammadpur</td>
+                    <td><input type="checkbox" name="NewMarket" value="NewMarket" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="NewMarket"){ echo "checked='checked'"; break;}} ?> >New Market</td>
 
                 </tr>
                 <tr>
-                    <td><input type="checkbox" name="pallabi" value="pallabi">Pallabi</td>
-                    <td><input type="checkbox" name="ramna" value="ramna">Ramna</td>
-                    <td><input type="checkbox" name="paltan" value="paltan">Paltan</td>
-                    <td><input type="checkbox" name="shahbagh" value="shahbagh">Shahbagh</td>
-                    <td><input type="checkbox" name="tejgaon" value="tejgaon">Tejgaon</td>
-                    <td><input type="checkbox" name="uttara" value="uttara">Uttara</td>
+                    <td><input type="checkbox" name="Pallabi" value="Pallabi" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Pallabi"){ echo "checked='checked'"; break;}} ?> >Pallabi</td>
+                    <td><input type="checkbox" name="Ramna" value="Ramna" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Ramna"){ echo "checked='checked'"; break;}} ?> >Ramna</td>
+                    <td><input type="checkbox" name="Paltan" value="Paltan" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Paltan"){ echo "checked='checked'"; break;}} ?> >Paltan</td>
+                    <td><input type="checkbox" name="Shahbagh" value="Shahbagh" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Shahbagh"){ echo "checked='checked'"; break;}} ?> >Shahbagh</td>
+                    <td><input type="checkbox" name="Tejgaon" value="Tejgaon" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Tejgaon"){ echo "checked='checked'"; break;}} ?> >Tejgaon</td>
+                    <td><input type="checkbox" name="Uttara" value="Uttara" <?php for($i=0;$i<sizeof($area);$i++){ if($area[$i]=="Uttara"){ echo "checked='checked'"; break;}} ?> >Uttara</td>
 
                 </tr>
 
@@ -344,21 +600,21 @@ $experience=$tutorInfo['Experience'];
 
 
                 <tr>
-                    <td><input type="checkbox" name="bangla" value="bangla">Bangla</td>
-                    <td><input type="checkbox" name="english" value="english">English</td>
-                    <td><input type="checkbox" name="math" value="math">Math</td>
-                    <td><input type="checkbox" name="ict" value="ict">ICT</td>
-                    <td><input type="checkbox" name="highermath" value="bangla">Higher Math</td>
-                    <td><input type="checkbox" name="socialSciene" value="math">Social Science</td>
+                    <td><input type="checkbox" name="Bangla" value="Bangla" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Bangla"){ echo "checked='checked'"; break;}} ?> >Bangla</td>
+                    <td><input type="checkbox" name="English" value="English" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="English"){ echo "checked='checked'"; break;}} ?> >English</td>
+                    <td><input type="checkbox" name="Math" value="Math" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Math"){ echo "checked='checked'"; break;}} ?> >Math</td>
+                    <td><input type="checkbox" name="ICT" value="ICT" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="ICT"){ echo "checked='checked'"; break;}} ?> >ICT</td>
+                    <td><input type="checkbox" name="HigherMath" value="HigherMath"<?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="HigherMath"){ echo "checked='checked'"; break;}} ?> >Higher Math</td>
+                    <td><input type="checkbox" name="SocialSciene" value="SocialScience" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="SocialScience"){ echo "checked='checked'"; break;}} ?> >Social Science</td>
                 </tr>
 
                 <tr>
-                    <td><input type="checkbox" name="religion" value="ict">Religion</td>
-                    <td><input type="checkbox" name="physics" value="bangla">Physics</td>
-                    <td><input type="checkbox" name="chemistry" value="ict">Chemistry</td>
-                    <td><input type="checkbox" name="biology" value="bangla">Biology</td>
-                    <td><input type="checkbox" name="physicalExcercise" value="bangla">Physical Excercise</td>
-                    <td><input type="checkbox" name="career" value="bangla">Career</td>
+                    <td><input type="checkbox" name="Religion" value="Religion" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Religion"){ echo "checked='checked'"; break;}} ?> >Religion</td>
+                    <td><input type="checkbox" name="Physics" value="Physics" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Physics"){ echo "checked='checked'"; break;}} ?> >Physics</td>
+                    <td><input type="checkbox" name="Chemistry" value="Chemistry" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Chemistry"){ echo "checked='checked'"; break;}} ?> >Chemistry</td>
+                    <td><input type="checkbox" name="Biology" value="Biology" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Biology"){ echo "checked='checked'"; break;}} ?> >Biology</td>
+                    <td><input type="checkbox" name="PhysicalExcercise" value="PhysicalExcercise" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="PhysicalExercise"){ echo "checked='checked'"; break;}} ?> >Physical Excercise</td>
+                    <td><input type="checkbox" name="Career" value="Career" <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Career"){ echo "checked='checked'"; break;}} ?> >Career</td>
 
                 </tr>
 
@@ -378,21 +634,21 @@ $experience=$tutorInfo['Experience'];
 
 
                 <tr>
-                    <td><input type="checkbox" name="1" value="1">class 1</td>
-                    <td><input type="checkbox" name="2" value="2">class 2</td>
-                    <td><input type="checkbox" name="3" value="3">class 3</td>
-                    <td><input type="checkbox" name="4" value="4">class 4</td>
-                    <td><input type="checkbox" name="5" value="5">class 5</td>
-                    <td><input type="checkbox" name="6" value="6">class 6</td>
+                    <td><input type="checkbox" name="1" value="1" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="1"){ echo "checked='checked'"; break;}} ?> >class 1</td>
+                    <td><input type="checkbox" name="2" value="2" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="2"){ echo "checked='checked'"; break;}} ?> >class 2</td>
+                    <td><input type="checkbox" name="3" value="3" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="3"){ echo "checked='checked'"; break;}} ?> >class 3</td>
+                    <td><input type="checkbox" name="4" value="4" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="4"){ echo "checked='checked'"; break;}} ?> >class 4</td>
+                    <td><input type="checkbox" name="5" value="5" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="5"){ echo "checked='checked'"; break;}} ?> >class 5</td>
+                    <td><input type="checkbox" name="6" value="6" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="6"){ echo "checked='checked'"; break;}} ?> >class 6</td>
                 </tr>
 
                 <tr>
-                    <td><input type="checkbox" name="7" value="7">class 7</td>
-                    <td><input type="checkbox" name="8" value="8">class 8</td>
-                    <td><input type="checkbox" name="9" value="9">class 9</td>
-                    <td><input type="checkbox" name="10" value="10">class 10</td>
-                    <td><input type="checkbox" name="11" value="11">class 11</td>
-                    <td><input type="checkbox" name="12" value="12">class 12</td>
+                    <td><input type="checkbox" name="7" value="7" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="7"){ echo "checked='checked'"; break;}} ?> >class 7</td>
+                    <td><input type="checkbox" name="8" value="8" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="8"){ echo "checked='checked'"; break;}} ?> >class 8</td>
+                    <td><input type="checkbox" name="9" value="9" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="9"){ echo "checked='checked'"; break;}} ?> >class 9</td>
+                    <td><input type="checkbox" name="10" value="10" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="10"){ echo "checked='checked'"; break;}} ?> >class 10</td>
+                    <td><input type="checkbox" name="11" value="11" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="11"){ echo "checked='checked'"; break;}} ?> >class 11</td>
+                    <td><input type="checkbox" name="12" value="12" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="12"){ echo "checked='checked'"; break;}} ?> >class 12</td>
 
                 </tr>
 
@@ -432,7 +688,7 @@ $experience=$tutorInfo['Experience'];
 
     </div>
 </div>
-
+</form>
 
 </body>
 
