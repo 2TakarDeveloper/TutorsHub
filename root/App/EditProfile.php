@@ -87,68 +87,85 @@ $address=$tutorInfo['Address'];
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
 
+    /////////////////////
+    $tutor;//this is the array that holds tutor object
     //name
     if(isset($_POST["name"]))
     {
-        $name=$_POST["name"];
+        $tutor['Name']=$_POST["name"];
     }
-    var_dump($name);
+
 
     //email
     if(isset($_POST["email"]))
     {
-        $email=$_POST["email"];
+        $tutor['Email']=$_POST["email"];
     }
-    var_dump($email);
+
+
+    if(isset($_POST["imageUrl"]))
+    {
+        $tutor['UserImage']=$_POST["imageUrl"];
+    }
+
+    UpdateTutor($tutor);//This function is incomplete doesn't include email update do check it.
+
+    //////
+
+
+    //
+    $userInfo;//this array holds user info
 
     //phone no
     if(isset($_POST["phone"]))
     {
-        $phone=$_POST["phone"];
+        $userInfo['MobileNo']=$_POST["phone"];
     }
-    var_dump($phone);
+
 
     //bio
     if(isset($_POST["bio"]))
     {
-        $bio=$_POST["bio"];
+        $userInfo['Bio']=$_POST["bio"];
     }
-    var_dump($bio);
 
     //current status
     if(isset($_POST["status"]))
     {
-        $status=$_POST["status"];
+        $userInfo['CurrentStatus']=$_POST["status"];
     }
-    var_dump($status);
+
+
+    updateTutorInfo($userInfo,$_SESSION['UserId']);
+
+    /////////////////////////////
+
+    $searchInfo;//This one holds searchInfoProperties
+
+
 
     //gender
     if(isset($_POST["gender"]))
     {
-        $gender=$_POST["gender"];
+        $searchInfo['Gender']=$_POST["gender"];
     }
-    var_dump($gender);
+
 
     //medium
     if(isset($_POST["medium"]))
     {
-        $medium=$_POST["medium"];
+        $searchInfo['PrefferedMedium']=$_POST["medium"];
     }
     var_dump($medium);
 
     //salary
     if(isset($_POST["salary"]))
     {
-        $salary=$_POST["salary"];
+        $searchInfo['ExpextedSalary']=$_POST["salary"];
     }
-    var_dump($salary);
 
-    //image url
-    if(isset($_POST["imageUrl"]))
-    {
-        $imageUrl=$_POST["imageUrl"];
-    }
-    var_dump($imageUrl);
+
+
 
     //classes
     if(isset($_POST["1"]))
@@ -200,8 +217,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         $c.= "12,";
     }
 
-    $c=substr_replace($c, "", -1);
-    var_dump($c);
+    $searchInfo['PrefferedClasses']=substr_replace($c, "", -1);
+
 
 
 
@@ -279,8 +296,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         $a.= "Uttara,";
     }
 
-    $a=substr_replace($a, "", -1);
-    var_dump($a);
+    $searchInfo['PrefferedLocation']=substr_replace($a, "", -1);
+
 
 
 
@@ -334,9 +351,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         $s.= "Career,";
     }
 
-    $s=substr_replace($s, "", -1);
-    var_dump($s);
+    $searchInfo['PrefferedSubjects']=substr_replace($s, "", -1);
 
+    $searchInfo['UserId']=$_SESSION['UserId'];
+
+    UpdateSearchInfo($searchInfo);
 
 }
 
