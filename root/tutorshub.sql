@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2017 at 06:20 PM
+-- Generation Time: Sep 09, 2017 at 07:21 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -267,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `searchinfo` (
 --
 
 INSERT INTO `searchinfo` (`SerialNo`, `UserId`, `Gender`, `Availability`, `PrefferedLocation`, `PrefferedSubjects`, `PrefferedClasses`, `PrefferedMedium`, `ExpextedSalary`) VALUES
-(1, 1, 'Male', 1, 'Mirpur,Kalsi', 'Bangla,English', '1,2', 'Both', 20000);
+(1, 1, 'Male', 1, 'Mirpur,Kalsi', 'Bangla,English', '1,2', 'Bangla', 20000);
 
 -- --------------------------------------------------------
 
@@ -299,6 +299,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Password` varchar(30) NOT NULL,
   `UserImage` varchar(10000) DEFAULT NULL,
   `MemberSince` date NOT NULL,
+  `UserType` varchar(20) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Email` (`Email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
@@ -307,10 +308,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`Id`, `Name`, `Email`, `Password`, `UserImage`, `MemberSince`) VALUES
-(1, 'RKO', 'a@a.com', 'a', NULL, '2017-09-07'),
-(2, NULL, 'b@b.com', 'b', NULL, '2017-09-07'),
-(4, NULL, 'tazimtazim2012@gmail.com', '1', NULL, '2017-09-08');
+INSERT INTO `user` (`Id`, `Name`, `Email`, `Password`, `UserImage`, `MemberSince`, `UserType`) VALUES
+(1, 'RKO', 'a@a.com', 'a', NULL, '2017-09-07', 'Tutor'),
+(2, NULL, 'b@b.com', 'b', NULL, '2017-09-07', 'Tutor'),
+(4, NULL, 'tazimtazim2012@gmail.com', '1', NULL, '2017-09-08', 'Tutor');
 
 -- --------------------------------------------------------
 
