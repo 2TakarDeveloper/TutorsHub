@@ -16,15 +16,15 @@ function createNewExamTable($examName){
     //if Table creation is a success then call the bellow function
 
     $sql="CREATE TABLE IF NOT EXISTS `$examName` (
-    `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
-    `Question` varchar(10000) NOT NULL,
-    `A` varchar(100) NOT NULL,
-    `B` varchar(100) NOT NULL,
-    `C` varchar(100) NOT NULL,
-    `D` varchar(100) NOT NULL,
-    `Answer` varchar(100) NOT NULL,
-    PRIMARY KEY (`SerialNo`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
+      `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+      `Question` varchar(10000) NOT NULL,
+      `A` varchar(100) NOT NULL,
+      `B` varchar(100) NOT NULL,
+      `C` varchar(100) NOT NULL,
+      `D` varchar(100) NOT NULL,
+      `Answer` varchar(100) NOT NULL,
+      PRIMARY KEY (`SerialNo`)
+      ) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
     $result = executeSQL($sql);
 
