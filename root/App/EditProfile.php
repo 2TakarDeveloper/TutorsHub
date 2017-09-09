@@ -110,12 +110,12 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     //medium
     if(isset($_POST["medium"]))
     {
-        $searchInfo['PrefferedMedium']=$_POST["medium"];
+        $searchInfo['PreferredMedium']=$_POST["medium"];
     }
     //salary
     if(isset($_POST["salary"]))
     {
-        $searchInfo['ExpextedSalary']=$_POST["salary"];
+        $searchInfo['ExpectedSalary']=$_POST["salary"];
     }
     //classes
     if(isset($_POST["1"]))
@@ -166,7 +166,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     {
         $c.= "12,";
     }
-    $searchInfo['PrefferedClasses']=substr_replace($c, "", -1);
+    $searchInfo['PreferredClasses']=substr_replace($c, "", -1);
     //areas
     if(isset($_POST["Adabor"]))
     {
@@ -240,7 +240,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     {
         $a.= "Uttara,";
     }
-    $searchInfo['PrefferedLocation']=substr_replace($a, "", -1);
+    $searchInfo['PreferredLocation']=substr_replace($a, "", -1);
     //subjects
     if(isset($_POST["Bangla"]))
     {
@@ -290,7 +290,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     {
         $s.= "Career,";
     }
-    $searchInfo['PrefferedSubjects']=substr_replace($s, "", -1);
+    $searchInfo['PreferredSubjects']=substr_replace($s, "", -1);
     UpdateSearchInfo($searchInfo,$_SESSION['UserId']);
 }
 ?>
