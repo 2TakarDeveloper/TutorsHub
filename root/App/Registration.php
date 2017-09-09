@@ -1,5 +1,7 @@
 <?php require_once("../service/data_access.php") ?>
 <?php require_once("../service/TutorService.php") ?>
+<?php require_once("../service/TutorInfoService.php") ?>
+<?php require_once("../service/SearchInfoService.php") ?>
 
 
 <?php
@@ -19,6 +21,12 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
             //Set a method to sent back to home page if fail give error msg
             if(NewTutor($tutor)){
+
+                $id = GetTutorId($tutor[Email], $tutor[Password]);
+
+                NewSearchInfo($id);
+                NewTutorInfo($id);
+
                 header('../index.php');
             }
         }

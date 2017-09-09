@@ -1,7 +1,3 @@
-<?php require_once("./data_access.php") ?>
-<?php require_once("./TutorInfoService.php") ?>
-<?php require_once("./SearchInfoService.php") ?>
-
 
 <?php
 
@@ -11,13 +7,6 @@ function NewTutor($tutor){
 
     $sql = "INSERT INTO user(Email, Password, MemberSince, UserType) VALUES('$tutor[Email]','$tutor[Password]', '$tutor[MemberSince]', 'Tutor')";
     $result = executeSQL($sql);
-
-    if($result) {
-        $id = GetTutorId($tutor[Email], $tutor[Password]);
-
-        NewSearchInfo($id);
-        NewTutorInfo($id);
-    }
 
     return $result;
 }
