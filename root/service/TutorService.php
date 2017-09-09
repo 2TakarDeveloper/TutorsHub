@@ -1,3 +1,7 @@
+<?php require_once("../data_access.php") ?>
+<?php require_once("../TutorInfoService.php") ?>
+<?php require_once("../SearchInfoService.php") ?>
+
 
 <?php
 
@@ -7,6 +11,13 @@ function NewTutor($tutor){
 
     $sql = "INSERT INTO user(Email, Password, MemberSince, UserType) VALUES('$tutor[Email]','$tutor[Password]', '$tutor[MemberSince]', 'Tutor')";
     $result = executeSQL($sql);
+
+    if($result) {
+        $id = GetTutorId($tutor[Email], $tutor[Password]);
+
+        NewSearchInfo($id);
+        NewTutorInfo($id);
+    }
 
     return $result;
 }
@@ -23,6 +34,16 @@ function UpdateTutor($tutor,$id){
     return $result;
 }
 
+function GetTutorId($email,$password){
+    //returns true if username and password is correct
+
+    $sql = "SELECT Id FROM user where Email='$email' AND Password='$password'";
+    $result = executeSQL($sql);
+
+    $row=mysqli_fetch_assoc($result);
+
+    return $row;
+}
 
 function ValidTutor($email,$password){
     //returns true if username and password is correct
