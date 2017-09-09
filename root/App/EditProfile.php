@@ -13,52 +13,58 @@ if(!isset($_SESSION["UserId"]))
 <?php require_once("../service/TutorInfoService.php") ?>
 <?php require_once("../service/SearchInfoService.php") ?>
 
-
 <?php
+
+
+
 //Set Coo
 //
-$c=""; //calsses
-$s=""; //subjects
-$a=""; //areas
+    $c = ""; //calsses
+    $s = ""; //subjects
+    $a = ""; //areas
 //
 //-----------------------------------------------------
-$tutor=getTutorbyId($_SESSION["UserId"]);
-$name=$tutor['Name'];
-$email=$tutor['Email'];
-$imageUrl=$tutor['UserImage'];
+    $tutor = getTutorbyId($_SESSION["UserId"]);
+    $name = $tutor['Name'];
+    $email = $tutor['Email'];
+    $imageUrl = $tutor['UserImage'];
 //--------------------------------
 //--------------------------------
-$tutorSearchInfo=getSearchInfo($_SESSION['UserId']);
-$salary=$tutorSearchInfo['ExpectedSalary'];
-$gender=$tutorSearchInfo['Gender'];
-$areas=$tutorSearchInfo['PreferredLocation'];
-$area=explode(",",$areas);
-$medium=$tutorSearchInfo['PreferredMedium'];
-$classes=$tutorSearchInfo['PreferredClasses'];
-$class=explode(",",$classes);
-$subjects=$tutorSearchInfo['PreferredSubjects'];
-$subject=explode(",",$subjects);
-if($tutorSearchInfo['Availability'])
-{
-    $availability="Available";
-}
-else
-{
-    $availability="Not Available";
-}
+    $tutorSearchInfo = getSearchInfo($_SESSION['UserId']);
+    $salary = $tutorSearchInfo['ExpectedSalary'];
+    $gender = $tutorSearchInfo['Gender'];
+    $areas = $tutorSearchInfo['PreferredLocation'];
+    $area = explode(",", $areas);
+    $medium = $tutorSearchInfo['PreferredMedium'];
+    $classes = $tutorSearchInfo['PreferredClasses'];
+    $class = explode(",", $classes);
+    $subjects = $tutorSearchInfo['PreferredSubjects'];
+    $subject = explode(",", $subjects);
+
+
+    if ($tutorSearchInfo['Availability']) {
+        $availability = "Available";
+    } else {
+        $availability = "Not Available";
+    }
 //----------------------------------
 //--------------------------------------
-$tutorInfo=GetTutorInfo($_SESSION['UserId']);
-$status=$tutorInfo['CurrentStatus'];
-$bio=$tutorInfo['Bio'];
-$phone=$tutorInfo['MobileNo'];
-$address=$tutorInfo['Address'];
+    $tutorInfo = GetTutorInfo($_SESSION['UserId']);
+    $status = $tutorInfo['CurrentStatus'];
+    $bio = $tutorInfo['Bio'];
+    $phone = $tutorInfo['MobileNo'];
+    $address = $tutorInfo['Address'];
+
+
 //---------------------------------------
 ?>
 
 <?php
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
+
+    var_dump($_POST);
+
     /////////////////////
     $tutor;//this is the array that holds tutor object
     //name
@@ -71,9 +77,9 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     {
         $tutor['Email']=$_POST["email"];
     }
-    if(isset($_POST["imageUrl"]))
+    if(isset($_POST["image_URL"]))
     {
-        $tutor['UserImage']=$_POST["imageUrl"];
+        $tutor['UserImage']=$_POST["image_URL"];
     }
     UpdateTutor($tutor,$_SESSION["UserId"]);
     //////
@@ -345,7 +351,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 <script type="text/javascript">
     function viewImage()
     {
-        var newImageSrc=document.getElementById('image_url').value;
+        var newImageSrc=document.getElementById('image_URL').value;
         document.getElementById('image').src=newImageSrc;
         return false;
     }
@@ -354,7 +360,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 <body>
 
-<form>
+<form method="Post">
     <div class="container">
 
         <div class="wrap">
@@ -388,10 +394,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                             <!-- Image url -->
 
-                            <img id="image" src="<?php echo $imageUrl ?>" image" width="150" height="150" />
+                            <img id="image" src="<?php echo $imageUrl?>" image" width="150" height="150" />
                             <br><br>
-                            <label> Image URL </label><input type="text" id="image_url" value=<?php echo $imageUrl ?>>
-                            <button id="clickme" onclick=" return viewImage()" >View</button>
+                            <label> Image URL </label>
+                            <input type="text" id="image_URL" value="<?php echo $imageUrl?>" >
+                            <button type="button" onclick="return viewImage()">View</button>
                         </td>
                     </tr>
                 </table>
