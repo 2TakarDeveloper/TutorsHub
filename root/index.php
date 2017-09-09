@@ -6,7 +6,8 @@ session_start();
 
 <?php
 require_once("./service/data_access.php");
-require_once "./service/TutorService.php";
+require_once ("./service/TutorService.php");
+require_once ("./service/TutorInfoService.php");
 
 
 ?>
@@ -17,7 +18,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
     if(ValidTutor($_POST['email'],$_POST['password']))
     {
+        $lastLogin=date_create('now')->format('Y-m-d H:i:s');
+        UpdateLastLogin($_SESSION['UserId'],$lastLogin);
+
         header("Location: ./App/TutorDashBoard.php");
+
     }
 
 }
