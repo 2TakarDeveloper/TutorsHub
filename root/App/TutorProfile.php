@@ -39,19 +39,19 @@ $activation=$tutor['MemberSince'];;//Member since
 
 //--------------------------------
 $tutorSearchInfo=getSearchInfo($_SESSION['UserId']);
-$salary=$tutorSearchInfo['ExpextedSalary'];
+$salary=$tutorSearchInfo['ExpectedSalary'];
 $gender=$tutorSearchInfo['Gender'];
 
 
-$areas=$tutorSearchInfo['PrefferedLocation'];
+$areas=$tutorSearchInfo['PreferredLocation'];
 $area=explode(",",$areas);
 
-$medium=$tutorSearchInfo['PrefferedMedium'];
+$medium=$tutorSearchInfo['PreferredMedium'];
 
-$classes=$tutorSearchInfo['PrefferedClasses'];
+$classes=$tutorSearchInfo['PreferredClasses'];
 $class=explode(",",$classes);
 
-$subjects=$tutorSearchInfo['PrefferedSubjects'];
+$subjects=$tutorSearchInfo['PreferredSubjects'];
 $subject=explode(",",$subjects);
 
 

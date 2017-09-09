@@ -29,14 +29,14 @@ $imageUrl=$tutor['UserImage'];
 //--------------------------------
 //--------------------------------
 $tutorSearchInfo=getSearchInfo($_SESSION['UserId']);
-$salary=$tutorSearchInfo['ExpextedSalary'];
+$salary=$tutorSearchInfo['ExpectedSalary'];
 $gender=$tutorSearchInfo['Gender'];
-$areas=$tutorSearchInfo['PrefferedLocation'];
+$areas=$tutorSearchInfo['PreferredLocation'];
 $area=explode(",",$areas);
-$medium=$tutorSearchInfo['PrefferedMedium'];
-$classes=$tutorSearchInfo['PrefferedClasses'];
+$medium=$tutorSearchInfo['PreferredMedium'];
+$classes=$tutorSearchInfo['PreferredClasses'];
 $class=explode(",",$classes);
-$subjects=$tutorSearchInfo['PrefferedSubjects'];
+$subjects=$tutorSearchInfo['PreferredSubjects'];
 $subject=explode(",",$subjects);
 if($tutorSearchInfo['Availability'])
 {
@@ -370,17 +370,17 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                     <tr>
                         <td>
                             <label> Name </label>
-                            <input type="text" name="name" value=<?php echo $name ?> size="25" />
+                            <input type="text" name="name" value="<?php echo $name ?>" size="25" />
 
                             <label> Email </label>
-                            <input type="text" name="email" value=<?php echo $email ?> size="25" />
+                            <input type="text" name="email" value="<?php echo $email ?>" size="25" />
 
 
                             <label> Phone No. </label>
-                            <input type="text" name="phone" value=<?php echo $phone ?> size="25" />
+                            <input type="text" name="phone" value="<?php echo $phone ?>" size="25" />
 
                             <label> Address </label>
-                            <input type="text" name="address" value=<?php echo $address ?> size="25" />
+                            <input type="text" name="address" value= "<?php echo $address ?>" size="25" />
                         </td>
 
                         <td>
@@ -427,7 +427,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                     <tr>
                         <label> Currtent Status </label>
                         <td>
-                            <input type="text" name="status" value=<?php echo $status ?> size="25"/>
+                            <input type="text" name="status" value="<?php echo $status ?>" size="25"/>
                         </td>
                     </tr>
                 </table>
@@ -522,7 +522,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                     <label> Expected Salary </label>
                     <tr>
                         <td>
-                            <input type="text" name="salary" value=<?php echo $salary ?>  size="20" /> <span> /hour </span>
+                            <input type="text" name="salary" value="<?php echo $salary ?> "size="20" /> <span> /hour </span>
                         </td>
                     <tr>
                 </table>

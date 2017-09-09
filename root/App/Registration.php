@@ -3,8 +3,8 @@
 <?php require_once("../service/TutorInfoService.php") ?>
 <?php require_once("../service/SearchInfoService.php") ?>
 
-
 <?php
+
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
     $pass = $_POST['password'];
@@ -22,12 +22,15 @@ if($_SERVER['REQUEST_METHOD']=="POST")
             //Set a method to sent back to home page if fail give error msg
             if(NewTutor($tutor)){
 
-                $id = GetTutorId($tutor[Email], $tutor[Password]);
+                $id = GetTutorId($tutor['Email'], $tutor['Password']);
 
-                NewSearchInfo($id);
-                NewTutorInfo($id);
+                NewSearchInfo($id['Id']);
+                NewTutorInfo($id['Id']);
 
                 header('../index.php');
+            }
+            else{
+                echo ("Failed");
             }
         }
     }
@@ -85,4 +88,5 @@ if($_SERVER['REQUEST_METHOD']=="POST")
  
 </body>
 </html>
+
 

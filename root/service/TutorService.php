@@ -7,7 +7,6 @@ function NewTutor($tutor){
 
     $sql = "INSERT INTO user(Email, Password, MemberSince, UserType) VALUES('$tutor[Email]','$tutor[Password]', '$tutor[MemberSince]', 'Tutor')";
     $result = executeSQL($sql);
-
     return $result;
 }
 

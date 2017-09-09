@@ -2,6 +2,7 @@
 
 function NewTutorInfo($tutorID){
     //this function will take a tutorID object and add that to database
+
     $sql = "INSERT INTO userinfo(TutorId) VALUES($tutorID)";
     $result = executeSQL($sql);
     return $result;
