@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2017 at 05:40 PM
+-- Generation Time: Sep 09, 2017 at 08:10 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -267,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `searchinfo` (
 --
 
 INSERT INTO `searchinfo` (`SerialNo`, `UserId`, `Gender`, `Availability`, `PreferredLocation`, `PreferredSubjects`, `PreferredClasses`, `PreferredMedium`, `ExpectedSalary`) VALUES
-(1, 1, 'Female', 1, 'Mirpur,Pallabi', 'Bangla,English', '1,2,3', 'Bangla', 20000);
+(1, 1, 'Male', 1, 'Mirpur,Pallabi', 'Bangla,English', '1,2,3', 'Bangla', 20000);
 
 -- --------------------------------------------------------
 
@@ -309,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`Id`, `Name`, `Email`, `Password`, `UserImage`, `MemberSince`, `UserType`) VALUES
-(1, 'Tushar', 'a@a.com', 'a', '1', '2017-09-07', 'Tutor'),
+(1, 'Tushar', 'a@a.com', 'a', 'http://img.uefa.com/imgml/TP/players/1/2017/324x324/1900737.jpg', '2017-09-07', 'Tutor'),
 (2, NULL, 'b@b.com', 'b', NULL, '2017-09-07', 'Tutor'),
 (4, NULL, 'tazimtazim2012@gmail.com', '1', NULL, '2017-09-08', 'Tutor');
 
@@ -361,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `userinfo` (
 --
 
 INSERT INTO `userinfo` (`SerialNo`, `TutorId`, `MobileNo`, `Address`, `CurrentStatus`, `Bio`, `LastLogin`, `Level`, `Experience`) VALUES
-(1, 1, '01740072214', 'Dhaka', 'AIUB', '', '2017-09-09 15:53:59', 1, 1);
+(1, 1, '01740072215', 'Dhaka Bangladesh', 'AIUB', 'I am a student', '2017-09-09 20:06:01', 1, 1);
 
 --
 -- Constraints for dumped tables
