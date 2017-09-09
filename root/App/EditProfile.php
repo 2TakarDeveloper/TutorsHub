@@ -347,13 +347,14 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     {
         var newImageSrc=document.getElementById('image_url').value;
         document.getElementById('image').src=newImageSrc;
+        return false;
     }
 </script>
 
 
 <body>
 
-<form method="post">
+<form>
     <div class="container">
 
         <div class="wrap">
@@ -390,7 +391,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                             <img id="image" src="<?php echo $imageUrl ?>" image" width="150" height="150" />
                             <br><br>
                             <label> Image URL </label><input type="text" id="image_url" value=<?php echo $imageUrl ?>>
-                            <button id="clickme" onclick="viewImage()" >View</button>
+                            <button id="clickme" onclick=" return viewImage()" >View</button>
                         </td>
                     </tr>
                 </table>
