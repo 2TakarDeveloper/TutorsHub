@@ -30,7 +30,7 @@ if(!isset($_SESSION["UserId"]))
 $tutor=getTutorbyId($_SESSION["UserId"]);
 $name=$tutor['Name'];
 $mail=$tutor['Email'];
-$imageUrl="Resources/a.jpg";//set later
+$imageUrl=$tutor['UserImage'];
 $activation=$tutor['MemberSince'];;//Member since
 //--------------------------------
 
@@ -204,7 +204,7 @@ $experience=$tutorInfo['Experience'];
                 </tr>
 
                 <td  colspan="2">
-                    <p style="margin-top:-20px"> <br> <img src="Resources/call.png"  style="width:20px;height:20px;"> +88<?php echo $phone; ?> <img src="Resources/email.jpg"  style="width:20px;height:20px;"> <?php echo $mail; ?> <img src="Resources/add.png"  style="width:20px;height:20px;"> <?php echo $address; ?> </P>
+                    <p style="margin-top:-20px"> <br> <img src=<?php echo $imageUrl; ?>  style="width:20px;height:20px;"> +88<?php echo $phone; ?> <img src="Resources/email.jpg"  style="width:20px;height:20px;"> <?php echo $mail; ?> <img src="Resources/add.png"  style="width:20px;height:20px;"> <?php echo $address; ?> </P>
                 </td>
 
             </table>
