@@ -1,5 +1,6 @@
 <?php
-	require_once('../index.php');
+require_once("../index.php");
+
 	
 	$name="Tushar";
 	$salary="6000Tk";
