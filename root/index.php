@@ -5,9 +5,9 @@ session_start();
 
 
 <?php
-require_once("./service/data_access.php");
-require_once ("./service/TutorService.php");
-require_once ("./service/TutorInfoService.php");
+include_once("./service/data_access.php");
+include_once ("./service/TutorService.php");
+include_once ("./service/TutorInfoService.php");
 
 
 ?>
@@ -16,14 +16,25 @@ require_once ("./service/TutorInfoService.php");
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
 
-    if(ValidTutor($_POST['email'],$_POST['password']))
-    {
-        $lastLogin=date_create('now')->format('Y-m-d H:i:s');
-        UpdateLastLogin($_SESSION['UserId'],$lastLogin);
-
-        header("Location: ./App/TutorDashBoard.php");
-
+    if(isset($_POST['SearchButton'])){
+        header("Location: ./SearchResult.php");
     }
+
+
+
+    if(isset($_POST['LogInButton'])){
+        if(ValidTutor($_POST['email'],$_POST['password']))
+        {
+            $lastLogin=date_create('now')->format('Y-m-d H:i:s');
+            UpdateLastLogin($_SESSION['UserId'],$lastLogin);
+
+            header("Location: ./App/TutorDashBoard.php");
+
+        }
+    }
+
+
+
 
 }
 
@@ -69,7 +80,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                 <td>
                     <br/>
-                    <button>Log in</button>
+                    <button name="LogInButton">Log in</button>
 
                 </td>
 
@@ -96,7 +107,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     <br/>
 
     <div align="center">
-        <button class="button" type="submit" formaction="./App/SearchResult.php">Search</button>
+        <button name="SearchButton" class="button" type="submit" formaction="./App/SearchResult.php">Search</button>
     </div>
     <br/>
 
