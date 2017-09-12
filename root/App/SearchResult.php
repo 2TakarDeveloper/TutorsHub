@@ -1,7 +1,5 @@
 <?php
-require_once("../index.php");
 
-	
 	$name="Tushar";
 	$salary="6000Tk";
 	$phoneno="01740072214";

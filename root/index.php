@@ -5,9 +5,9 @@ session_start();
 
 
 <?php
-require_once("./service/data_access.php");
-require_once ("./service/TutorService.php");
-require_once ("./service/TutorInfoService.php");
+include_once("./service/data_access.php");
+include_once ("./service/TutorService.php");
+include_once ("./service/TutorInfoService.php");
 
 
 ?>
@@ -16,14 +16,30 @@ require_once ("./service/TutorInfoService.php");
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
 
-    if(ValidTutor($_POST['email'],$_POST['password']))
-    {
-        $lastLogin=date_create('now')->format('Y-m-d H:i:s');
-        UpdateLastLogin($_SESSION['UserId'],$lastLogin);
 
-        header("Location: ./App/TutorDashBoard.php");
+    if(isset($_POST['ViewProfile'])){
+
+        //Cookie/Session will have tutor id
+        header("Location: ./App/TutorProfile.php");
+
 
     }
+
+
+
+    if(isset($_POST['LogInButton'])){
+        if(ValidTutor($_POST['email'],$_POST['password']))
+        {
+            $lastLogin=date_create('now')->format('Y-m-d H:i:s');
+            UpdateLastLogin($_SESSION['UserId'],$lastLogin);
+
+            header("Location: ./App/TutorDashBoard.php");
+
+        }
+    }
+
+
+
 
 }
 
@@ -69,7 +85,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                 <td>
                     <br/>
-                    <button>Log in</button>
+                    <button name="LogInButton">Log in</button>
 
                 </td>
 
@@ -96,7 +112,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     <br/>
 
     <div align="center">
-        <button class="button" type="submit" formaction="./App/SearchResult.php">Search</button>
+        <button name="SearchButton" class="button" type="submit" formaction="./App/SearchResult.php">Search</button>
     </div>
     <br/>
 
@@ -185,4 +201,59 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 </body>
 
 </html>
+
+
+<?php
+
+if(isset($_POST['SearchButton'])){
+    //header("Location: ./SearchResult.php");
+
+    $name="Tushar";
+    $salary="6000Tk";
+    $phoneno="01740072214";
+
+
+
+    /////HTML------------------
+    ///
+    ///
+
+echo '<body>';
+    echo '<form method="post">';
+    echo    '<br/>';
+    echo    '<br/>';
+        echo    '<table align=center border=1 width=800>';
+        echo    '<tr>';
+             //Get data
+             //foreach ($row as $tutor){
+                 echo    '<td>';
+                 echo    '<img src="./App/Resources/pic.jpg" height=80px width=80px>';
+                 echo    '</td>';
+
+                 echo    '<td>';
+                 echo    '<b>Name: </b>' ;echo $name; echo    ' <br/>';
+                 echo    '<b>Expected salary: </b>';echo $salary; echo    '<br/>';
+                 echo    '<b>Mobile no: </b>';echo $phoneno;
+                 echo    '</td>';
+                 echo    '<td>';
+                 echo    '<button name="ViewProfile">View</button>';
+                 echo   '</td>';
+            // }
+
+
+echo    '</tr>';
+
+
+        echo    '</table>';
+    echo '</form>';
+echo '</body>';
+
+
+
+}
+
+
+
+
+?>
 
