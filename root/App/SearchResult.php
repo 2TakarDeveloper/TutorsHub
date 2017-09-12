@@ -1,9 +1,5 @@
 <?php
-include_once("../index.php");
-include_once("./service/data_access.php");
-include_once ("./service/TutorService.php");
-include_once ("./service/TutorInfoService.php");
-	
+
 	$name="Tushar";
 	$salary="6000Tk";
 	$phoneno="01740072214";

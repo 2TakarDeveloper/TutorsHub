@@ -4,14 +4,14 @@ $contact=false; //for public access contact will be true and there will be a con
 
 <?php
 // Start the session
-session_start();
-
-var_dump($_SESSION);
-
-if(!isset($_SESSION["UserId"]))
-{
-    header("Location: ../index.php");
-}
+//session_start();
+//
+//var_dump($_SESSION);
+//
+//if(!isset($_SESSION["UserId"]))
+//{
+//    header("Location: ../index.php");
+//}
 
 ?>
 

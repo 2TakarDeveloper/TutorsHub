@@ -16,8 +16,13 @@ include_once ("./service/TutorInfoService.php");
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
 
-    if(isset($_POST['SearchButton'])){
-        header("Location: ./SearchResult.php");
+
+    if(isset($_POST['ViewProfile'])){
+
+        //Cookie/Session will have tutor id
+        header("Location: ./App/TutorProfile.php");
+
+
     }
 
 
@@ -196,4 +201,59 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 </body>
 
 </html>
+
+
+<?php
+
+if(isset($_POST['SearchButton'])){
+    //header("Location: ./SearchResult.php");
+
+    $name="Tushar";
+    $salary="6000Tk";
+    $phoneno="01740072214";
+
+
+
+    /////HTML------------------
+    ///
+    ///
+
+echo '<body>';
+    echo '<form method="post">';
+    echo    '<br/>';
+    echo    '<br/>';
+        echo    '<table align=center border=1 width=800>';
+        echo    '<tr>';
+             //Get data
+             //foreach ($row as $tutor){
+                 echo    '<td>';
+                 echo    '<img src="./App/Resources/pic.jpg" height=80px width=80px>';
+                 echo    '</td>';
+
+                 echo    '<td>';
+                 echo    '<b>Name: </b>' ;echo $name; echo    ' <br/>';
+                 echo    '<b>Expected salary: </b>';echo $salary; echo    '<br/>';
+                 echo    '<b>Mobile no: </b>';echo $phoneno;
+                 echo    '</td>';
+                 echo    '<td>';
+                 echo    '<button name="ViewProfile">View</button>';
+                 echo   '</td>';
+            // }
+
+
+echo    '</tr>';
+
+
+        echo    '</table>';
+    echo '</form>';
+echo '</body>';
+
+
+
+}
+
+
+
+
+?>
 
