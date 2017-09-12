@@ -97,14 +97,10 @@ $experience=$tutorInfo['Experience'];
     .container
     {
         width:100%;
-        margin-left:12.5%;
-        margin-right:12.5%;
-
     }
 
     .wrap
     {
-        width: 75%;
     <!--overflow:auto;-->
         position: absolute;
         float: center;
@@ -136,6 +132,7 @@ $experience=$tutorInfo['Experience'];
     {
         padding: 7px;
         text-align: left;
+        border-radius:5px;
 
     }
     tr
@@ -149,14 +146,20 @@ $experience=$tutorInfo['Experience'];
         padding: 0px;
     }
 
+    #info h1{
+
+        border-bottom: 2px solid black;
+        width:30%;
+    }
+
 
     #one td {
-        border: .5px solid lightgray;
+        border: 2px solid black;g
         padding: 5px;
     }
 
     #two td {
-        border: .5px solid-lightgray;
+        border: 2px solid #0372CC;
         padding: 5px;
         text-align: center;
     }
@@ -215,7 +218,7 @@ $experience=$tutorInfo['Experience'];
             <table cellspacing="10">
 
 
-                <td>
+                <td id="info">
                     <h1>
                         Tution Info
                     </h1>
