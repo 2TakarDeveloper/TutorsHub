@@ -1,10 +1,10 @@
 <?php
 session_start();
 var_dump($_SESSION);
-if(!isset($_SESSION["UserId"]))
-{
-    header("Location: ../index.php");
-}
+//if(!isset($_SESSION["UserId"]))
+//{
+//    header("Location: ../index.php");
+//}
 ?>
 
 <?php require_once("../service/data_access.php") ?>
