@@ -279,10 +279,10 @@ $experience=$tutorInfo['Experience'];
 
                                 <table id="two">
                                     <tr>
-                                        <td class="active" align="center">
-                                            <p > <?php if($medium=="Both" || $medium=="Bangla") echo"&#10004;";?> Bangla </p>
+                                        <td <?php if($medium=="Both" || $medium=="Bangla") echo 'class="active"' ;?> align="center">
+                                            <p > <?php if($medium=="Both" || $medium=="Bangla")  echo"&#10004;" ;?> Bangla </p>
                                         </td>
-                                        <td align="center">
+                                        <td <?php if($medium=="Both" || $medium=="English") echo 'class="active"' ;?> align="center">
                                             <p> <?php if($medium=="Both" || $medium=="English") echo"&#10004;";?> English </p>
                                         </td>
 
@@ -303,7 +303,7 @@ $experience=$tutorInfo['Experience'];
                             <td>
                                 <table id="two">
                                     <tr>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==1){ echo 'class="active"'; break;}} ?> >
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==1){ echo "&#10004;"; break;}} ?> Class1 </p>
                                         </td>
                                         <td>
