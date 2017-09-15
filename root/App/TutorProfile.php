@@ -4,14 +4,14 @@ $contact=false; //for public access contact will be true and there will be a con
 
 <?php
 // Start the session
-//session_start();
-//
-//var_dump($_SESSION);
-//
-//if(!isset($_SESSION["UserId"]))
-//{
-//    header("Location: ../index.php");
-//}
+session_start();
+
+var_dump($_SESSION);
+
+if(!isset($_SESSION["UserId"]))
+{
+    header("Location: ../index.php");
+}
 
 ?>
 
@@ -107,9 +107,15 @@ $experience=$tutorInfo['Experience'];
     <!--overflow:auto;-->
         position: absolute;
         float: center;
-        background:#A4A19C;
         height:750px;
-        padding:20px;
+        background: repeating-linear-gradient(
+                -55deg,
+                #5d9634,
+                #5d9634 10px,
+                #538c2b 10px,
+                #538c2b 20px
+        );
+        padding:30px;
     }
 
     .left
@@ -124,6 +130,7 @@ $experience=$tutorInfo['Experience'];
         float: right;
         width: 35%;
         background:#181A1A;
+        margin-top: 10px;
     }
 
     table
@@ -212,10 +219,10 @@ $experience=$tutorInfo['Experience'];
             <table style="width=100%" cellspacing="10">
                 <tr style="background:transparent">
                     <td style="width:30%;">
-                        <img id="profile_img" src= "../pix.jpg" <?php /*echo $imageUrl; */?> >
+                        <img id="profile_img" src= "<?php echo $imageUrl;?>" >
                     </td>
 
-                    <td>
+                    <td style="background: white">
                         <h1 style="margin-top:-30px">  <?php echo $name; ?> </h1>
 
                         </p>
@@ -226,7 +233,7 @@ $experience=$tutorInfo['Experience'];
                 </tr>
 
                 <td  colspan="2">
-                    <p style="margin-top:-20px"> <br> <!--<img src=<?php /*echo $imageUrl; */?>  style="width:20px;height:20px;"> -->+8801989727606<?php echo $phone; ?> <img src="Resources/email.jpg"  style="width:20px;height:20px;"> <?php echo $mail; ?> <img src="Resources/add.png"  style="width:20px;height:20px;"> <?php echo $address; ?> </P>
+                    <p style="margin-top:-20px"> <br> <img src="./Resources/call.png"  style="width:20px;height:20px;"> <?php echo $phone; ?> <img src="Resources/email.jpg"  style="width:20px;height:20px;"> <?php echo $mail; ?> <img src="Resources/add.png"  style="width:20px;height:20px;"> <?php echo $address; ?> </P>
                 </td>
 
             </table>
@@ -239,7 +246,7 @@ $experience=$tutorInfo['Experience'];
 
                 <td id="info">
                     <h1>
-                        Tution Info
+                        Tuition Info
                     </h1>
 
 
@@ -279,10 +286,10 @@ $experience=$tutorInfo['Experience'];
 
                                 <table id="two">
                                     <tr>
-                                        <td class="active" align="center">
-                                            <p > <?php if($medium=="Both" || $medium=="Bangla") echo"&#10004;";?> Bangla </p>
+                                        <td <?php if($medium=="Both" || $medium=="Bangla") echo 'class="active"' ;?> align="center">
+                                            <p > <?php if($medium=="Both" || $medium=="Bangla")  echo"&#10004;" ;?> Bangla </p>
                                         </td>
-                                        <td align="center">
+                                        <td <?php if($medium=="Both" || $medium=="English") echo 'class="active"' ;?> align="center">
                                             <p> <?php if($medium=="Both" || $medium=="English") echo"&#10004;";?> English </p>
                                         </td>
 
@@ -303,43 +310,43 @@ $experience=$tutorInfo['Experience'];
                             <td>
                                 <table id="two">
                                     <tr>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==1){ echo 'class="active"'; break;}} ?> >
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==1){ echo "&#10004;"; break;}} ?> Class1 </p>
                                         </td>
-                                        <td>
-                                        <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==2){ echo "&#10004;"; break;}} ?> Class2 </p>
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==2){ echo 'class="active"'; break;}} ?> >
+                                            <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==2){ echo "&#10004;"; break;}} ?> Class2 </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==3){ echo 'class="active"'; break;}} ?>>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==3){ echo "&#10004;"; break;}} ?> Class3 </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==4){ echo 'class="active"'; break;}} ?>>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==4){ echo "&#10004;"; break;}} ?> Class4 </p>
                                         </td>
-                                        <td>
+                                        <td<?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==5){ echo 'class="active"'; break;}} ?>>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==5){ echo "&#10004;"; break;}} ?> Class5 </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==6){ echo 'class="active"'; break;}} ?>>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==6){ echo "&#10004;"; break;}} ?> Class6 </p>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td class="active">
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==7){ echo 'class="active"'; break;}} ?>>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==7){ echo "&#10004;"; break;}} ?> Class7 </p>
                                         </td>
-                                        <td class="active">
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==8){ echo 'class="active"'; break;}} ?>>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==8){ echo "&#10004;"; break;}} ?> Class8 </p>
                                         </td>
-                                        <td class="active">
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==9){ echo 'class="active"'; break;}} ?>>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==9){ echo "&#10004;"; break;}} ?> Class9 </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==10){ echo 'class="active"'; break;}} ?>>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==10){ echo "&#10004;"; break;}} ?> Class10 </p>
                                         </td>
-                                        <td class="active">
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==11){ echo 'class="active"'; break;}} ?>>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==11){ echo "&#10004;"; break;}} ?> Class11 </p>
                                         </td>
-                                        <td class="active">
+                                        <td <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==12){ echo 'class="active"'; break;}} ?>>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==12){ echo "&#10004;"; break;}} ?> Class12 </p>
                                         </td>
 
@@ -359,45 +366,45 @@ $experience=$tutorInfo['Experience'];
                             <td>
                                 <table id="two">
                                     <tr>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="English"){ echo 'class="active"'; break;}} ?>  >
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="English"){ echo "&#10004;"; break;}} ?>  English </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Bangla"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Bangla"){ echo "&#10004;"; break;}} ?> Bangla </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Physics"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Physics"){ echo "&#10004;"; break;}} ?> Physics </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Chemestry"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Chemistry"){ echo "&#10004;"; break;}} ?> Chemistry </p>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td<?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Math"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Math"){ echo "&#10004;"; break;}} ?>  Math </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Religion"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Religion"){ echo "&#10004;"; break;}} ?> Religion </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="HigherMath"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="HigherMath"){ echo "&#10004;"; break;}} ?> HigherMath </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="SocialScience"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="SocialScience"){ echo "&#10004;"; break;}} ?> SocialScience </p>
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <td>
+                                        <td<?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="PhysicalExercise"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="PhysicalExercise"){ echo "&#10004;"; break;}} ?>  PhysicalExercise </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Career"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Career"){ echo "&#10004;"; break;}} ?> Career </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="ICT"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="ICT"){ echo "&#10004;"; break;}} ?> ICT </p>
                                         </td>
-                                        <td>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Biology"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Biology"){ echo "&#10004;"; break;}} ?> Biology </p>
                                         </td>
                                     </tr>
