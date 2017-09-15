@@ -3,7 +3,7 @@ $contact=false; //for public access contact will be true and there will be a con
 ?>
 
 <?php
-/*// Start the session
+// Start the session
 session_start();
 
 var_dump($_SESSION);
@@ -11,7 +11,7 @@ var_dump($_SESSION);
 if(!isset($_SESSION["UserId"]))
 {
     header("Location: ../index.php");
-}*/
+}
 
 ?>
 
@@ -226,7 +226,7 @@ $experience=$tutorInfo['Experience'];
                         <h1 style="margin-top:-30px">  <?php echo $name; ?> </h1>
 
                         </p>
-                        <p> <b>Current Status: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores assumenda doloribus ea earum illum, inventore laudantium maiores nam numquam odit officia unde ut veniam voluptates? Accusantium dignissimos nihil perferendis! <?php echo $status; ?>  </p>
+                        <p> <b>Current Status: </b> <?php echo $status; ?>  </p>
                         <p> <?php echo $bio; ?> </p>
                     </td>
 

@@ -3,6 +3,9 @@
 <?php require_once("../service/TutorInfoService.php") ?>
 <?php require_once("../service/SearchInfoService.php") ?>
 
+<?php require_once("../service/PreferredLocationService.php") ?>
+<?php require_once("../service/PreferredSubjectService.php") ?>
+
 <?php
 
 if($_SERVER['REQUEST_METHOD']=="POST")
@@ -24,8 +27,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                      NewSearchInfo($id['Id']);
                      NewTutorInfo($id['Id']);
+                     NewTutorPreferredLocations($id['Id']);
+                     NewTutorPreferredSubjects($id['Id']);
 
-                     header('../index.php');
+                     header('Location:../index.php');
+                     exit();
                  } else {
                      echo("Failed");
                  }
