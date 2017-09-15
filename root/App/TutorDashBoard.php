@@ -127,8 +127,8 @@ if(!isset($_SESSION["UserId"]))
 			<div class="dropdown" style="width:300px;">
 			  <button class="dropbtn" style="width:300px;">Exam </button>
 			  <div class="dropdown-content">
-				<a href="#">Bangla</a>
-				<a href="#">English</a>
+				<a href="./ExamPage.php">Bangla</a>
+				<a href="./ExamPage.php">English</a>
 				
 			  </div>
 			</div>
