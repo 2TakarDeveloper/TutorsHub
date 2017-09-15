@@ -37,55 +37,133 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 }
 
 ?>
-
+<style>
+    body
+    {
+        font-family: sans-serif;
+        background-image: url("../bg.jpg");
+    }
+    tbody
+    {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    table
+    {
+        border-spacing: 0px;
+    }
+    th
+    {
+        padding: 20px;
+        color: white;
+        background: linear-gradient(
+                to bottom,
+                #5d9634,
+                #5d9634 50%,
+                #538c2b 50%,
+                #538c2b
+        );
+        background-size: 100% 20px;
+    }
+    input
+    {
+        border: 2px solid green;
+    }
+    input:focus{
+        outline: none;
+    }
+    .left
+    {
+        background: green;
+        padding:20px;
+        color:#fff;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+    .right
+    {
+        padding: 20px;
+        background: white;
+    }
+    button
+    {
+        padding:10px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: green;
+        border: 2px solid green;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: green;
+        color: white;
+    }
+    #btn
+    {
+        padding:10px;
+        background-color: green;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: white;
+        border: 2px solid white;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+    #btn:hover {
+        background-color: white;
+        color: green;
+        border: 2px solid green;
+    }
+</style>
 
 <html>
 <body>
- 
-	<form method="post">
-	
-		<table  align="center" >
-		<tr>
-			<td colspan=4>
-			<center><font size=4><b>Registration Form</b></font></center>
-			<hr>
-			</td>
-		</tr>
-		
-		<tr>
-			<td>Email</td><br/>
-			<td>
-			<input type="text" name="email" size="20" /><br />
-			</td>
-		</tr>
-		
-		<tr>
-			<td>Password
-			</td><br/>
-			<td>
-			<input type="password" name="password" size="20" /><br />
-			</td>
-		</tr>
-		
-		<tr>
-			<td>Confirm Password
-			</td><br/>
-			<td>
-			<input type="password" name="cpassword" size="20" /><br />
-			</td>
-		</tr>
+    <div class="wrap">
 
-		<tr>
-			
-			<td><button formaction="../index.php">Back to Home</button></td>
-			
-			<td align="right"><input type="submit" name="confirm" value="Confirm" /></td>
-		</tr>
-			
-			
-		</table>
-	</form>
- 
+        <form method="post">
+
+            <table  align="center" >
+            <tr>
+                <th colspan=4>
+                <center><font size=4><b>Registration Form</b>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="left">Email</td><br/>
+                <td class="right">
+                <input type="text" name="email" size="20" /><br />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="left">Password
+                </td><br/>
+                <td class="right">
+                <input type="password" name="password" size="20" /><br />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="left">Confirm Password
+                </td><br/>
+                <td class="right">
+                <input type="password" name="cpassword" size="20" /><br />
+                </td>
+            </tr>
+
+            <tr>
+
+                <td class="right"><button formaction="../index.php">Back to Home</button></td>
+
+                <td align="center" style="background: green"><input id="btn" type="submit" name="confirm" value="Confirm" /></td>
+            </tr>
+
+
+            </table>
+        </form>
+    </div>
 </body>
 </html>
 

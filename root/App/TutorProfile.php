@@ -93,7 +93,10 @@ $experience=$tutorInfo['Experience'];
 
 <html>
 <style>
-
+    body
+    {
+        font-family: sans-serif;
+    }
     .container
     {
         width:100%;
@@ -104,8 +107,9 @@ $experience=$tutorInfo['Experience'];
     <!--overflow:auto;-->
         position: absolute;
         float: center;
-        background:lightgray;
-        height:830px;
+        background:#A4A19C;
+        height:750px;
+        padding:20px;
     }
 
     .left
@@ -119,6 +123,7 @@ $experience=$tutorInfo['Experience'];
     {
         float: right;
         width: 35%;
+        background:#181A1A;
     }
 
     table
@@ -148,18 +153,31 @@ $experience=$tutorInfo['Experience'];
 
     #info h1{
 
-        border-bottom: 2px solid black;
-        width:30%;
+        border-bottom: 2px solid #4CAF50;
+        width:20%;
+    }
+    #profile_img
+    {
+        height: 150px;
+        width:150px;
+        border-radius: 50%;
+        border: 15px double #4CAF50;
+
+    }
+    .active{
+        background: #4CAF50;
+        color: #ffffff;
+        border: 2px solid #4CAF50 !important;
+
     }
 
-
-    #one td {
-        border: 2px solid black;g
+    #one {
         padding: 5px;
+        font-weight:600;
     }
 
     #two td {
-        border: 2px solid #0372CC;
+        border: 2px solid red;
         padding: 5px;
         text-align: center;
     }
@@ -179,6 +197,7 @@ $experience=$tutorInfo['Experience'];
         position: center;
     }
 
+
 </style>
 
 
@@ -191,9 +210,9 @@ $experience=$tutorInfo['Experience'];
 
         <div class="left">
             <table style="width=100%" cellspacing="10">
-                <tr>
-                    <td>
-                        <img src=<?php echo $imageUrl; ?>  style="width:200px;height:230px;">
+                <tr style="background:transparent">
+                    <td style="width:30%;">
+                        <img id="profile_img" src= "../pix.jpg" <?php /*echo $imageUrl; */?> >
                     </td>
 
                     <td>
@@ -207,7 +226,7 @@ $experience=$tutorInfo['Experience'];
                 </tr>
 
                 <td  colspan="2">
-                    <p style="margin-top:-20px"> <br> <img src=<?php echo $imageUrl; ?>  style="width:20px;height:20px;"> +88<?php echo $phone; ?> <img src="Resources/email.jpg"  style="width:20px;height:20px;"> <?php echo $mail; ?> <img src="Resources/add.png"  style="width:20px;height:20px;"> <?php echo $address; ?> </P>
+                    <p style="margin-top:-20px"> <br> <!--<img src=<?php /*echo $imageUrl; */?>  style="width:20px;height:20px;"> -->+8801989727606<?php echo $phone; ?> <img src="Resources/email.jpg"  style="width:20px;height:20px;"> <?php echo $mail; ?> <img src="Resources/add.png"  style="width:20px;height:20px;"> <?php echo $address; ?> </P>
                 </td>
 
             </table>
@@ -260,8 +279,8 @@ $experience=$tutorInfo['Experience'];
 
                                 <table id="two">
                                     <tr>
-                                        <td align="center">
-                                            <p> <?php if($medium=="Both" || $medium=="Bangla") echo"&#10004;";?> Bangla </p>
+                                        <td class="active" align="center">
+                                            <p > <?php if($medium=="Both" || $medium=="Bangla") echo"&#10004;";?> Bangla </p>
                                         </td>
                                         <td align="center">
                                             <p> <?php if($medium=="Both" || $medium=="English") echo"&#10004;";?> English </p>
@@ -305,22 +324,22 @@ $experience=$tutorInfo['Experience'];
                                     </tr>
 
                                     <tr>
-                                        <td>
+                                        <td class="active">
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==7){ echo "&#10004;"; break;}} ?> Class7 </p>
                                         </td>
-                                        <td>
+                                        <td class="active">
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==8){ echo "&#10004;"; break;}} ?> Class8 </p>
                                         </td>
-                                        <td>
+                                        <td class="active">
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==9){ echo "&#10004;"; break;}} ?> Class9 </p>
                                         </td>
                                         <td>
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==10){ echo "&#10004;"; break;}} ?> Class10 </p>
                                         </td>
-                                        <td>
+                                        <td class="active">
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==11){ echo "&#10004;"; break;}} ?> Class11 </p>
                                         </td>
-                                        <td>
+                                        <td class="active">
                                             <p> <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]==12){ echo "&#10004;"; break;}} ?> Class12 </p>
                                         </td>
 
@@ -400,7 +419,7 @@ $experience=$tutorInfo['Experience'];
                             <td>
                                 <table id="two">
                                     <tr>
-                                        <?php for($i=0;$i<sizeof($area);$i++){ echo"<td><p>$area[$i]</p></td>";} ?>
+                                        <?php for($i=0;$i<sizeof($area);$i++){ echo"<td style='border:2px solid green;'><p>$area[$i]</p></td>";} ?>
 
                                     </tr>
 
@@ -435,7 +454,7 @@ $experience=$tutorInfo['Experience'];
             <table  cellspacing="10">
 
                 <tr>
-                    <td>
+                    <td style="width:30%">
 
                         <b> Level </b>
 
