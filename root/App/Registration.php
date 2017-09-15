@@ -41,7 +41,23 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     body
     {
         font-family: sans-serif;
-        background-image: url("../bg.jpg");
+        background: repeating-linear-gradient(
+                -55deg,
+                #5d9634,
+                #5d9634 10px,
+                #538c2b 10px,
+                #538c2b 20px
+        );
+        position: relative;
+    }
+    .wrap
+    {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
     tbody
     {
@@ -55,18 +71,23 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     {
         padding: 20px;
         color: white;
-        background: linear-gradient(
-                to bottom,
-                #5d9634,
-                #5d9634 50%,
-                #538c2b 50%,
-                #538c2b
+        background: repeating-linear-gradient(
+                -55deg,
+                #222,
+                #222 10px,
+                #333 10px,
+                #333 20px
         );
-        background-size: 100% 20px;
+    }
+    th
+    {
+        font-size: 20px;
     }
     input
     {
         border: 2px solid green;
+        padding: 10px;
+        font-size: large;
     }
     input:focus{
         outline: none;

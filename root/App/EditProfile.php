@@ -414,6 +414,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         background-color: white;
         color: black;
         border: 2px solid #4CAF50;
+        padding: 5px;
     }
     #img_submit:hover {
         background-color: #4CAF50;
