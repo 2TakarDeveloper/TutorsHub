@@ -3,9 +3,6 @@
 <?php require_once("../service/TutorInfoService.php") ?>
 <?php require_once("../service/SearchInfoService.php") ?>
 
-<?php require_once("../service/PreferredLocationService.php") ?>
-<?php require_once("../service/PreferredSubjectService.php") ?>
-
 <?php
 
 if($_SERVER['REQUEST_METHOD']=="POST")
@@ -13,31 +10,30 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     $pass = $_POST['password'];
     $cpass = $_POST['cpassword'];
 
-     if(isset($_POST['confirm'])) {
-         if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-             if ($pass == $cpass) {
-                 $tutor['Email'] = $_POST['email'];
-                 $tutor['Password'] = $_POST['password'];
-                 $tutor['MemberSince'] = date_create('now')->format('Y-m-d');
 
-                 //Set a method to sent back to home page if fail give error msg
-                 if (NewTutor($tutor)) {
+    if (filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))
+    {
+        if($pass==$cpass)
+        {
+            $tutor['Email']=$_POST['email'];
+            $tutor['Password']=$_POST['password'];
+            $tutor['MemberSince']=date_create('now')->format('Y-m-d');
 
-                     $id = GetTutorId($tutor['Email'], $tutor['Password']);
+            //Set a method to sent back to home page if fail give error msg
+            if(NewTutor($tutor)){
 
-                     NewSearchInfo($id['Id']);
-                     NewTutorInfo($id['Id']);
-                     NewTutorPreferredLocations($id['Id']);
-                     NewTutorPreferredSubjects($id['Id']);
+                $id = GetTutorId($tutor['Email'], $tutor['Password']);
 
-                     header('Location:../index.php');
-                     exit();
-                 } else {
-                     echo("Failed");
-                 }
-             }
-         }
-     }
+                NewSearchInfo($id['Id']);
+                NewTutorInfo($id['Id']);
+
+                header('../index.php');
+            }
+            else{
+                echo ("Failed");
+            }
+        }
+    }
 }
 
 ?>
@@ -45,7 +41,23 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     body
     {
         font-family: sans-serif;
-    //background-image: url("../bg.jpg");
+        background: repeating-linear-gradient(
+                -55deg,
+                #5d9634,
+                #5d9634 10px,
+                #538c2b 10px,
+                #538c2b 20px
+        );
+        position: relative;
+    }
+    .wrap
+    {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
     tbody
     {
@@ -59,18 +71,23 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     {
         padding: 20px;
         color: white;
-        background: linear-gradient(
-                to bottom,
-                #5d9634,
-                #5d9634 50%,
-                #538c2b 50%,
-                #538c2b
+        background: repeating-linear-gradient(
+                -55deg,
+                #222,
+                #222 10px,
+                #333 10px,
+                #333 20px
         );
-        background-size: 100% 20px;
+    }
+    th
+    {
+        font-size: 20px;
     }
     input
     {
         border: 2px solid green;
+        padding: 10px;
+        font-size: large;
     }
     input:focus{
         outline: none;
@@ -123,21 +140,21 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 <html>
 <body>
-<div class="wrap">
+    <div class="wrap">
 
-    <form method="post">
+        <form method="post">
 
-        <table  align="center" >
+            <table  align="center" >
             <tr>
                 <th colspan=4>
-                    <center><font size=4><b>Registration Form</b>
+                <center><font size=4><b>Registration Form</b>
                 </th>
             </tr>
 
             <tr>
                 <td class="left">Email</td><br/>
                 <td class="right">
-                    <input type="text" name="email" size="20" /><br />
+                <input type="text" name="email" size="20" /><br />
                 </td>
             </tr>
 
@@ -145,7 +162,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 <td class="left">Password
                 </td><br/>
                 <td class="right">
-                    <input type="password" name="password" size="20" /><br />
+                <input type="password" name="password" size="20" /><br />
                 </td>
             </tr>
 
@@ -153,7 +170,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 <td class="left">Confirm Password
                 </td><br/>
                 <td class="right">
-                    <input type="password" name="cpassword" size="20" /><br />
+                <input type="password" name="cpassword" size="20" /><br />
                 </td>
             </tr>
 
@@ -165,9 +182,9 @@ if($_SERVER['REQUEST_METHOD']=="POST")
             </tr>
 
 
-        </table>
-    </form>
-</div>
+            </table>
+        </form>
+    </div>
 </body>
 </html>
 

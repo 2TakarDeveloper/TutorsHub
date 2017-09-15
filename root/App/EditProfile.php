@@ -1,17 +1,10 @@
 <?php
-session_start();
+/*session_start();
 var_dump($_SESSION);
 if(!isset($_SESSION["UserId"]))
 {
     header("Location: ../index.php");
-}
-
-
-if(isset($_POST['cancel'])){
-    header("Location: ./TutorDashBoard.php");
-}
-
-
+}*/
 ?>
 
 <?php require_once("../service/data_access.php") ?>
@@ -281,36 +274,36 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 //
 //-----------------------------------------------------
-$tutor = getTutorbyId($_SESSION["UserId"]);
-$name = $tutor['Name'];
-$email = $tutor['Email'];
-$imageUrl = $tutor['UserImage'];
+    $tutor = getTutorbyId($_SESSION["UserId"]);
+    $name = $tutor['Name'];
+    $email = $tutor['Email'];
+    $imageUrl = $tutor['UserImage'];
 //--------------------------------
 //--------------------------------
-$tutorSearchInfo = getSearchInfo($_SESSION['UserId']);
-$salary = $tutorSearchInfo['ExpectedSalary'];
-$gender = $tutorSearchInfo['Gender'];
-$areas = $tutorSearchInfo['PreferredLocation'];
-$area = explode(",", $areas);
-$medium = $tutorSearchInfo['PreferredMedium'];
-$classes = $tutorSearchInfo['PreferredClasses'];
-$class = explode(",", $classes);
-$subjects = $tutorSearchInfo['PreferredSubjects'];
-$subject = explode(",", $subjects);
+    $tutorSearchInfo = getSearchInfo($_SESSION['UserId']);
+    $salary = $tutorSearchInfo['ExpectedSalary'];
+    $gender = $tutorSearchInfo['Gender'];
+    $areas = $tutorSearchInfo['PreferredLocation'];
+    $area = explode(",", $areas);
+    $medium = $tutorSearchInfo['PreferredMedium'];
+    $classes = $tutorSearchInfo['PreferredClasses'];
+    $class = explode(",", $classes);
+    $subjects = $tutorSearchInfo['PreferredSubjects'];
+    $subject = explode(",", $subjects);
 
 
-if ($tutorSearchInfo['Availability']) {
-    $availability = "Available";
-} else {
-    $availability = "Not Available";
-}
+    if ($tutorSearchInfo['Availability']) {
+        $availability = "Available";
+    } else {
+        $availability = "Not Available";
+    }
 //----------------------------------
 //--------------------------------------
-$tutorInfo = GetTutorInfo($_SESSION['UserId']);
-$status = $tutorInfo['CurrentStatus'];
-$bio = $tutorInfo['Bio'];
-$phone = $tutorInfo['MobileNo'];
-$address = $tutorInfo['Address'];
+    $tutorInfo = GetTutorInfo($_SESSION['UserId']);
+    $status = $tutorInfo['CurrentStatus'];
+    $bio = $tutorInfo['Bio'];
+    $phone = $tutorInfo['MobileNo'];
+    $address = $tutorInfo['Address'];
 
 
 //---------------------------------------
@@ -607,15 +600,15 @@ $address = $tutorInfo['Address'];
                     <tr>
                         <td class="control-group">
                             <label class="control control--radio"><input type="radio" name="medium" value="Bangla" <?php if($medium=="Bangla") echo "checked='checked'"; ?> >
-                                <span> Bangla </span><div class="control__indicator"></div></label>
+                            <span> Bangla </span><div class="control__indicator"></div></label>
                         </td>
                         <td class="control-group">
                             <label class="control control--radio"><input type="radio" name="medium" value="English" <?php if($medium=="English") echo "checked='checked'"; ?> >
-                                <span> English </span><div class="control__indicator"></div></label>
+                            <span> English </span><div class="control__indicator"></div></label>
                         </td>
                         <td class="control-group">
                             <label class="control control--radio"><input type="radio" name="medium" value="Both" <?php if($medium=="Both") echo "checked='checked'"; ?> >
-                                <span> Both </span><div class="control__indicator"></div></label>
+                            <span> Both </span><div class="control__indicator"></div></label>
                         </td>
                     </tr>
                 </table>
@@ -679,7 +672,6 @@ $address = $tutorInfo['Address'];
                         <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="6" value="6" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="6"){ echo "checked='checked'"; break;}} ?> >class 6<div class="control__indicator"></div></td>
                     </tr>
                     <tr>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="7" value="7" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="7"){ echo "checked='checked'"; break;}} ?> >class 7<div class="control__indicator"></div></td>
                         <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="8" value="8" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="8"){ echo "checked='checked'"; break;}} ?> >class 8<div class="control__indicator"></div></td>
                         <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="9" value="9" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="9"){ echo "checked='checked'"; break;}} ?> >class 9<div class="control__indicator"></div></td>
                         <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="10" value="10" <?php for($i=0;$i<sizeof($class);$i++){ if($class[$i]=="10"){ echo "checked='checked'"; break;}} ?> >class 10<div class="control__indicator"></div></td>

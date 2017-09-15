@@ -1,7 +1,7 @@
 <?php
     $host="127.0.0.1";
-    $user="tazim";
-    $pass="1";
+    $user="localhost";
+    $pass="";
     $dbname="tutorshub";
     $port=3306;
    
