@@ -3,7 +3,7 @@ $contact=false; //for public access contact will be true and there will be a con
 ?>
 
 <?php
-// Start the session
+/*// Start the session
 session_start();
 
 var_dump($_SESSION);
@@ -11,7 +11,7 @@ var_dump($_SESSION);
 if(!isset($_SESSION["UserId"]))
 {
     header("Location: ../index.php");
-}
+}*/
 
 ?>
 
@@ -107,9 +107,15 @@ $experience=$tutorInfo['Experience'];
     <!--overflow:auto;-->
         position: absolute;
         float: center;
-        background:#A4A19C;
         height:750px;
-        padding:20px;
+        background: repeating-linear-gradient(
+                -55deg,
+                #5d9634,
+                #5d9634 10px,
+                #538c2b 10px,
+                #538c2b 20px
+        );
+        padding:30px;
     }
 
     .left
@@ -124,6 +130,7 @@ $experience=$tutorInfo['Experience'];
         float: right;
         width: 35%;
         background:#181A1A;
+        margin-top: 10px;
     }
 
     table
@@ -215,11 +222,11 @@ $experience=$tutorInfo['Experience'];
                         <img id="profile_img" src= "<?php echo $imageUrl;?>" >
                     </td>
 
-                    <td>
+                    <td style="background: white">
                         <h1 style="margin-top:-30px">  <?php echo $name; ?> </h1>
 
                         </p>
-                        <p> <b>Current Status: </b> <?php echo $status; ?>  </p>
+                        <p> <b>Current Status: </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores assumenda doloribus ea earum illum, inventore laudantium maiores nam numquam odit officia unde ut veniam voluptates? Accusantium dignissimos nihil perferendis! <?php echo $status; ?>  </p>
                         <p> <?php echo $bio; ?> </p>
                     </td>
 
