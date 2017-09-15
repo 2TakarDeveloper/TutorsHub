@@ -37,6 +37,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 }
 
 ?>
+
+<html>
 <style>
     body
     {
@@ -138,7 +140,6 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
 </style>
 
-<html>
 <body>
     <div class="wrap">
 

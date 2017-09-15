@@ -47,8 +47,6 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 
 <html>
-
-
 <head>
     <style>
         body
@@ -63,18 +61,14 @@ if($_SERVER['REQUEST_METHOD']=="POST")
             );
             margin: 0;
         }
-        .wrap
+        form
         {
+            margin: 0;
             background: #ffffff;
             width: 85%;
             margin: auto;
             padding: 30px;
-            padding-bottom: 0px;
-            height: 97vh;
-        }
-        form
-        {
-            margin: 0;
+            min-height: 93%;
         }
         header
         {
@@ -263,7 +257,6 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     </style>
 </head>
 <body>
-<div class="wrap">
     <form method="post">
         <header>
             <div class="pp">  <h1>tutorsHUB</h1> </div>
@@ -390,8 +383,6 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 
     </form>
-</div>
-
 </body>
 
 </html>

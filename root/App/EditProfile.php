@@ -397,6 +397,10 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     {
         padding: 5px;
     }
+    input[type='checkbox']
+    {
+        margin-top: 5px;
+    }
     label
     {
         padding: 10px;
@@ -450,6 +454,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         width: 20px;
         height: 20px;
         background: #e6e6e6;
+        border: 2px solid #4CAF50;
     }
 
     .control--radio .control__indicator {
