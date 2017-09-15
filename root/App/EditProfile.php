@@ -321,7 +321,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     }
     .container
     {
-        width:100%;
+        min-width: 1260px;
         background: repeating-linear-gradient(
                 -55deg,
                 #5d9634,
@@ -329,6 +329,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 #538c2b 10px,
                 #538c2b 20px
         );
+
     }
     .wrap
     {
