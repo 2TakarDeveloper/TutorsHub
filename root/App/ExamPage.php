@@ -7,7 +7,7 @@
  session_start();
  $examName=$_SESSION['ExamName'];
  $examName="Bangla";
- $examQuestions=GetExamQuestionByName($examName);
+ $_SESSION['questions']=GetExamQuestionByName($examName);
 
 
 if($_SERVER['REQUEST_METHOD']=="POST")
@@ -15,8 +15,19 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
     if(isset($_POST['SubmitButton'])){
 
-        var_dump($_POST);
 
+         $i=0;
+        $examAnswers=[];
+
+        foreach ($_SESSION['questions'] as $question){
+
+            $examAnswer['qid']=$question['SerialNo'];
+            $examAnswer['answer']=$_POST[$question['SerialNo']];
+            $examAnswers[$i++]=$examAnswer;
+        }
+
+
+        var_dump( validateExamPaper($examAnswers,$examName));
        // header("Location: ./TutorDashBoard.php");
 
     }
@@ -95,12 +106,13 @@ div.pp
 
        <?php
 
-       foreach ($examQuestions as $question){
+       $i=1;
+       foreach ( $_SESSION['questions'] as $question){
            echo "<div>";
 
 
 
-           echo "<label>$question[Question]</label>";
+           echo "<label>$i)$question[Question]</label>";
 
            echo "<br>";
 
@@ -120,6 +132,8 @@ div.pp
            echo "<label for='a'>$question[D]</label>";
 
            echo "</div>";
+
+           $i++;
        }
 
 

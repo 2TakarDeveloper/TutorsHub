@@ -96,7 +96,7 @@ function validateExamPaper($examAnswers,$examName){
     //Will instruct later. no need to implement it now
     $score=0;
     foreach ($examAnswers as $examAnswer){
-        $sql = "SELECT count(*) FROM $examName WHERE SerialNo='$examAnswer[id]' AND Answer='$examAnswer[answer]' ";
+        $sql = "SELECT count(*) FROM $examName WHERE SerialNo='$examAnswer[qid]' AND Answer='$examAnswer[answer]' ";
         $result = executeSQL($sql);
         $row=mysqli_fetch_assoc($result);
 
