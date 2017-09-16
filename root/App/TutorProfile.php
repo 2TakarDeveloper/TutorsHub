@@ -6,19 +6,25 @@ $userId;
 <?php
 // Start the session
 session_start();
+
+
 if(isset($_SESSION['Contact'])){
     $contact=true;
 }
 
 if(!$contact){
+    var_dump($_SESSION['Contact']);
+
     if(!isset($_SESSION["UserId"]))
     {
         header("Location: ../index.php");
     }else{
+        var_dump($_SESSION['UserId']);
         $userId=$_SESSION['UserId'];
     }
 
 }else{
+    var_dump($_SESSION['TutorID']);
     $userId=$_SESSION["TutorID"];
 
 }

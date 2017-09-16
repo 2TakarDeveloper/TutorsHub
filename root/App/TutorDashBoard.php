@@ -1,11 +1,12 @@
 <?php
 // Start the session
 session_start();
-
+$_SESSION['Contact']=false;
 
 
 if(!isset($_SESSION["UserId"]))
 {
+
     header("Location: ../index.php");
 }
 

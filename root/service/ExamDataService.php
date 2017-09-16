@@ -75,10 +75,40 @@ function GetExamQuestionByName($examName){
     //return 1st 5 columns of the named examTable
     // table name is a variable that was pass in as parameter
     //this function will be used when tutor applies for exam
+
+    $sql = "SELECT SerialNo,Question,A,B,C,D FROM $examName";
+
+    $result = executeSQL($sql);
+
+    $value=[];
+    $i=0;
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $value[$i++]=$row;
+
+    }
+
+ return $value;
+
 }
 
-function validateExamPaper($examPaper,$examName){
+function validateExamPaper($examAnswers,$examName){
     //Will instruct later. no need to implement it now
+    $score=0;
+    foreach ($examAnswers as $examAnswer){
+        $sql = "SELECT count(*) FROM $examName WHERE SerialNo='$examAnswer[id]' AND Answer='$examAnswer[answer]' ";
+        $result = executeSQL($sql);
+        $row=mysqli_fetch_assoc($result);
+
+        if($row['count(*)']>0){
+            $score++;
+        }
+
+
+    }
+
+
+    return $score;
 }
 
 
