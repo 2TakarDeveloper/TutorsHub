@@ -1,5 +1,5 @@
 <?php
-// Start the session
+/*// Start the session
 session_start();
 
 var_dump($_SESSION);
@@ -7,7 +7,7 @@ var_dump($_SESSION);
 if(!isset($_SESSION["UserId"]))
 {
     header("Location: ../index.php");
-}
+}*/
 
 ?>
 
@@ -106,44 +106,73 @@ if(!isset($_SESSION["UserId"]))
 		</table>
 	
 	</div>
+    </form>
 	<hr>
 	
 		
 		<br>
-		<div align="center">
-			<div  style="float:left; width:350px; border-right:2px solid #666666; margin-right:10px; ">
-				<div class="dropdown" style="width:300px;">
-			  <button class="dropbtn" style="width:300px;">Profile</button>
-			  <div class="dropdown-content">
-				<a href="TutorProfile.php">View profile</a>
-				<a href="EditProfile.php">Edit profile</a>
-				
-				</div>
-			</div>
-				
-		
+    <div style="overflow: hidden">
+        <div  style=" width:350px; border-right:2px solid #666666; margin-right:10px; display: block; ">
+                <h1>PROFILE</h1>
+            <form action = "" method = "post">
+                <input type="submit" name="Edit Profile" value="Edit Profile" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="View Profile" value="View Profile" />
+            </form>
+        </div>
 				<br>
 				<br>
-			<div class="dropdown" style="width:300px;">
-			  <button class="dropbtn" style="width:300px;">Exam </button>
-			  <div class="dropdown-content">
-				<a href="./ExamPage.php">Bangla</a>
-				<a href="./ExamPage.php">English</a>
+        <div  style=" width:350px; border-right:2px solid #666666; margin-right:10px; display: block;">
+            <h1>EXAM</h1>
+            <form action = "" method = "post">
+                <input type="submit" name="Bangla" value="Bangla" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="English" value="English" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="Math" value="Math" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="ICT" value="ICT" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="Higher Math" value="Higher Math" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="Social Science" value="Social Science" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="Religion" value="Religion" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="Physics" value="Physics" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="Chemistry" value="Chemistry" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="Biology" value="Biology" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="Physical Exercise" value="Physical Exercise" />
+            </form>
+            <form action = "" method = "post">
+                <input type="submit" name="Career" value="Career" />
+            </form>
 				
 			  </div>
-			</div>
+    </div>
 			
 			
 			<br/>
 			<br/>
 			
-			
-		</div>	
+
 		
 		
 			<div style="float:left; width:600px; ">Schedule</div>
-			
-		</div>		
 		
 		
 	</form>
