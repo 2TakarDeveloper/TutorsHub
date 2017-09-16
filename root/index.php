@@ -8,27 +8,63 @@ session_start();
 include_once("./service/data_access.php");
 include_once ("./service/TutorService.php");
 include_once ("./service/TutorInfoService.php");
+include_once ("./service/SearchingService.php");
 
 
 ?>
 
+
+
 <?php
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
+    if(isset($_POST['SearchButton'])){
+
+        //$location=$_POST['location'];
+        //$sex=$_POST['sex'];
+        //$class=$_POST['class'];
+        $min=$_POST['min'];
+        $max=$_POST['max'];
+
+        $subjects="";
+
+        if(isset($_POST['Bangla']))
+            $subjects.="Bangla|";
+        if(isset($_POST['English']))
+            $subjects.="English|";
+        if(isset($_POST['Math']))
+            $subjects.="Math|";
+        if(isset($_POST['ICT']))
+            $subjects.="ICT|";
+        if(isset($_POST['Religion']))
+            $subjects.="Religion|";
+        if(isset($_POST['Physics']))
+            $subjects.="Physics|";
+        if(isset($_POST['Chemistry']))
+            $subjects.="Chemistry|";
+        if(isset($_POST['Biology']))
+            $subjects.="Biology|";
+        if(isset($_POST['SocialScience']))
+            $subjects.="SocialScience|";
+        if(isset($_POST['HigherMath']))
+            $subjects.="HigherMath|";
+        if(isset($_POST['Career']))
+            $subjects.="Career|";
+        if(isset($_POST['PhysicalExercise']))
+            $subjects.="PhysicalExercise|";
+
+        $subjects=substr_replace($subjects, "", -1);
 
 
-    if(isset($_POST['ViewProfile'])){
+        $r=GetTutorShortInfo('Mirpur','Male','11',$min,$max,$subjects,'Bangla');
 
-        //Cookie/Session will have tutor id
-        header("Location: ./App/TutorProfile.php");
-
+        var_dump($r);
 
     }
 
 
-
     if(isset($_POST['LogInButton'])){
-        if(ValidTutor($_POST['email'],$_POST['password']))
+        if(ValidTutor($_POST['email'],$_POST['textpass']))
         {
             $lastLogin=date_create('now')->format('Y-m-d H:i:s');
             UpdateLastLogin($_SESSION['UserId'],$lastLogin);
@@ -268,7 +304,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                         </td>
 
                         <td>
-                            Password<br/><input style="margin: 0" type="password" name="password" size="20" />
+                            Password<br/><input style="margin: 0" type="password" name="textpass" size="20" />
                         </td>
 
                         <td>
@@ -295,39 +331,39 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         </header>
 
         <div align="center">
-            <button name="SearchButton" class="button" type="submit" formaction="./App/SearchResult.php"><span>Search</span></button>
+            <button name="SearchButton" class="button" type="submit"><span>Search</span></button>
         </div>
         <br/>
 
 
         <div align="center">
             <select>
-                <option value="Mirpur"  style="width: 130">Mirpur</option>
-                <option value="Uttara"  style="width: 130">Uttara</option>
-                <option value="Dhanmondi"  style="width: 130">Dhanmondi</option>
+                <option name="location" value="Mirpur"  style="width: 130">Mirpur</option>
+                <option name="location" value="Uttara"  style="width: 130">Uttara</option>
+                <option name="location" value="Dhanmondi"  style="width: 130">Dhanmondi</option>
 
             </select>
 
             <select>
-                <option value="Male"  style="width: 130">Male</option>
-                <option value="Female"  style="width: 130">Female</option>
-                <option value="Any"  style="width: 130">Any</option>
+                <option name="sex" value="Male"  style="width: 130">Male</option>
+                <option name="sex" value="Female"  style="width: 130">Female</option>
+                <option name="sex" value="Any"  style="width: 130">Any</option>
 
             </select>
 
             <select>
-                <option value="one"  style="width: 130">Class 1</option>
-                <option value="two"  style="width: 130">Class 2</option>
-                <option value="three"  style="width: 130">Class 3</option>
-                <option value="four"  style="width: 130">Class 4</option>
-                <option value="five"  style="width: 130">Class 5</option>
-                <option value="six"  style="width: 130">Class 6</option>
-                <option value="seven"  style="width: 130">Class 7</option>
-                <option value="eight"  style="width: 130">Class 8</option>
-                <option value="nine"  style="width: 130">Class 9</option>
-                <option value="ten"  style="width: 130">Class 10</option>
-                <option value="eleven"  style="width: 130">Class 11</option>
-                <option value="twelve"  style="width: 130">Class 12</option>
+                <option name="class" value="1"  style="width: 130">Class 1</option>
+                <option name="class" value="2"  style="width: 130">Class 2</option>
+                <option name="class" value="3"  style="width: 130">Class 3</option>
+                <option name="class" value="4"  style="width: 130">Class 4</option>
+                <option name="class" value="5"  style="width: 130">Class 5</option>
+                <option name="class" value="6"  style="width: 130">Class 6</option>
+                <option name="class" value="7"  style="width: 130">Class 7</option>
+                <option name="class"  value="8"  style="width: 130">Class 8</option>
+                <option name="class" value="9"  style="width: 130">Class 9</option>
+                <option name="class" value="10"  style="width: 130">Class 10</option>
+                <option name="class" value="11"  style="width: 130">Class 11</option>
+                <option name="class" value="12"  style="width: 130">Class 12</option>
 
             </select>
             <div class="salary">
@@ -350,27 +386,27 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 
                     <tr>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="bangla" value="bangla">Bangla<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="english" value="english">English<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="math" value="math">Math<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="ict" value="ict">ICT<div class="control__indicator"></div></label></td>
+                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="Bangla" value="bangla">Bangla<div class="control__indicator"></div></label></td>
+                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="English" value="english">English<div class="control__indicator"></div></label></td>
+                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="Math" value="math">Math<div class="control__indicator"></div></label></td>
+                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="ICT" value="ict">ICT<div class="control__indicator"></div></label></td>
 
                     </tr>
 
 
                     <tr>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="religion" value="religion">Religion<div class="control__indicator"></div></label></td>
+                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="Religion" value="religion">Religion<div class="control__indicator"></div></label></td>
                         <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="physics" value="physics">Physics<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="chemistry" value="chemistry">Chemistry<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="biology" value="biology">Biology<div class="control__indicator"></div></label></td>
+                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="Chemistry" value="chemistry">Chemistry<div class="control__indicator"></div></label></td>
+                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="Biology" value="biology">Biology<div class="control__indicator"></div></label></td>
 
                     </tr>
 
                     <tr>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="science" value="science">Social Science<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="higherMath" value="higherMath">Higher Math<div class="control__indicator"></div></label></td>
+                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="SocialScience" value="science">Social Science<div class="control__indicator"></div></label></td>
+                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="HigherMath" value="higherMath">Higher Math<div class="control__indicator"></div></label></td>
                         <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="career" value="career">Career<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="physical" value="physical">Physical Exercise<div class="control__indicator"></div></label></td>
+                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="PhysicalExercise" value="physical">Physical Exercise<div class="control__indicator"></div></label></td>
 
                     </tr>
 

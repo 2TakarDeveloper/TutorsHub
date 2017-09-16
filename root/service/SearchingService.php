@@ -17,18 +17,24 @@ function GetTutorShortInfo($area,$sex,$class,$minSal,$maxSal,$subjects,$medium)
     $sql = "SELECT UserID FROM searchinfo 
             WHERE 
             Availability='1' AND
-            Gender= $sex AND
-            ExpectedSalary BETWEEN $minSal AND 200000 $maxSal
-            PreferredMedium=$medium AND
+            Gender= '$sex' AND
+            ExpectedSalary BETWEEN '$minSal' AND '$maxSal' AND
+            PreferredMedium='$medium' AND
             CONCAT(\",\", `PreferredLocation`, \",\") REGEXP \",($area),\" AND
             CONCAT(\",\", `PreferredClasses`, \",\") REGEXP \",($class),\" AND
             CONCAT(\",\", `PreferredSubjects`, \",\") REGEXP \",($subjects),\"
         ";
+
+    var_dump($sql);
+
     $result = executeSQL($sql);
 
-    $row = mysqli_fetch_assoc($result);
+
+    $row=mysqli_fetch_assoc($result);
+
     return $row;
 
 
 }
+
 

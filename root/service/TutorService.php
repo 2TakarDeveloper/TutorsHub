@@ -5,7 +5,7 @@
 function NewTutor($tutor){
     //this function will take a tutor object and add that to database
 
-    $sql = "INSERT INTO `user`(`Email`, `Password`, `MemberSince`, `UserType`) VALUES('$tutor[Email]','$tutor[Password]', '$tutor[MemberSince]', 'Tutor')";
+    $sql = "INSERT INTO `user`(`Email`, `Password`, `MemberSince`, `UserType`) VALUES('$tutor[Email]','$tutor[p]', '$tutor[MemberSince]', 'Tutor')";
     $result = executeSQL($sql);
     return $result;
 }

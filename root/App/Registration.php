@@ -7,7 +7,7 @@
 
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
-    $pass = $_POST['apassword'];
+    $pas = $_POST['textpass'];
     $cpass = $_POST['cpassword'];
 
 
@@ -16,16 +16,18 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         if($pass==$cpass)
         {
             $tutor['Email']=$_POST['email'];
-            $tutor['Password']=$_POST['apassword'];
+            $tutor['p']=$pas;
             $tutor['MemberSince']=date_create('now')->format('Y-m-d');
 
+            var_dump($tutor);
             //Set a method to sent back to home page if fail give error msg
             if(NewTutor($tutor)){
 
-                $id = GetTutorId($tutor['Email'], $tutor['Password']);
+                $id = GetTutorId($tutor['Email'], $tutor['p']);
 
                 NewSearchInfo($id['Id']);
                 NewTutorInfo($id['Id']);
+
 
                 header('Location:../index.php');
             }
@@ -163,7 +165,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 <td class="left">Password
                 </td><br/>
                 <td class="right">
-                <input type="password" name="apassword" size="20" /><br />
+                <input type="password" name="textpass" size="20" /><br />
                 </td>
             </tr>
 
