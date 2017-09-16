@@ -8,27 +8,65 @@
 
 
 
-function GetTutorShortInfo($area,$sex,$class,$minSal,$maxSal,$subjects)
+function GetTutorShortInfo($area,$sex,$class,$minSal,$maxSal,$subjects,$medium)
 {
+   //Format for Subject and class val1|val2|val3
 
-    //Make a query that wil search and return a list of ID that matches the paramters.
-    //Notice that you will have to match for subjects to so it's going to be complex as the data is in CSV format
 
     //GetSearchInfo By tutorID;
-    $sql = "SELECT * FROM searchinfo 
-            WHERE Gender= $sex AND
+    $sql = "SELECT UserID FROM searchinfo 
+            WHERE 
             Availability='1' AND
-            ExpectedSalary BETWEEN $minSal AND 200000 AND
-            PreferredMedium='Bangla' AND
-            find_in_set('Adabor',PreferredLocation) <> 0 AND
-            find_in_set('1',PreferredClasses) <> 0
-            find_in_set('1',PreferredSubjects) <> 0
+            Gender= '$sex' AND
+            ExpectedSalary BETWEEN '$minSal' AND '$maxSal' AND
+            PreferredMedium='$medium' AND
+            CONCAT(\",\", `PreferredLocation`, \",\") REGEXP \",($area),\" AND
+            CONCAT(\",\", `PreferredClasses`, \",\") REGEXP \",($class),\" AND
+            CONCAT(\",\", `PreferredSubjects`, \",\") REGEXP \",($subjects),\"
         ";
+
+
+
     $result = executeSQL($sql);
 
-    $row = mysqli_fetch_assoc($result);
-    return $row;
+
+    $value=[];
+    $i=0;
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $value[$i++]=$row['UserID'];
+
+    }
+
+
+
+    return GetTutorSearchResult($value);
 
 
 }
+
+function GetTutorSearchResult($tutorIds)
+{
+    $resultSet=[];
+    $i=0;
+
+    foreach ($tutorIds as $id)
+    {
+        $temp = getTutorbyId($id);
+        $resultSet[$i]['Id']= $id;
+        $resultSet[$i]['Name']= $temp['Name'];
+        $resultSet[$i]['UserImage']= $temp['UserImage'];
+
+        $temp=getSearchInfo($id);
+        $resultSet[$i]['Salary']=$temp['ExpectedSalary'];
+        $resultSet[$i]['Subjects']=$temp['PreferredSubjects'];
+        $resultSet[$i]['Gender']=$temp['Gender'];
+        $resultSet[$i]['Medium']=$temp['PreferredMedium'];
+        $resultSet[$i++]['Locations']=$temp['PreferredLocation'];
+
+    }
+
+    return $resultSet;
+}
+
 

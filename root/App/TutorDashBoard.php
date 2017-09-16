@@ -1,11 +1,12 @@
 <?php
 /*// Start the session
 session_start();
+$_SESSION['Contact']=false;
 
-var_dump($_SESSION);
 
 if(!isset($_SESSION["UserId"]))
 {
+
     header("Location: ../index.php");
 }*/
 

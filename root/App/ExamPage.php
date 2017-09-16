@@ -1,4 +1,39 @@
-<?php?>
+<?php require_once("../service/data_access.php") ?>
+<?php require_once("../service/ExamDataService.php") ?>
+
+<?php
+
+
+ session_start();
+ $examName=$_SESSION['ExamName'];
+ $examName="Bangla";
+ $examQuestions=GetExamQuestionByName($examName);
+
+
+if($_SERVER['REQUEST_METHOD']=="POST")
+{
+
+    if(isset($_POST['SubmitButton'])){
+
+        var_dump($_POST);
+
+       // header("Location: ./TutorDashBoard.php");
+
+    }
+
+    if(isset($_POST['BackButton'])){
+
+        var_dump($_POST);
+
+        header("Location: ./TutorDashBoard.php");
+
+    }
+
+
+}
+
+
+?>
 
 <html>
 
@@ -35,73 +70,70 @@ div.pp
 
 
 	</style>
+
 	</head>
 	<body>
-
+    <form method="Post">
 	<div class="pp">  <h1>tutorsHUB</h1>
 
 
 		<div  style="width:70px;">
-			  <button  class="button" style="width:70px;">Back </button>
+			  <button name="BackButton" class="button" style="width:70px;">Back </button>
 
 			</div>
 
 	</div>
 
-
-		  <center><h2>Bangla</h2></center>
-
+    <?php
+		  echo"<center><h2>$examName</h2></center>";
+    ?>
 
 	<hr>
 
 
 		<br>
 
-		<div align=>
+       <?php
 
-
-			<label>1. What year did Bangladesh finally become independent and gain the name it has today?</label>
-
-			<br>
+       foreach ($examQuestions as $question){
+           echo "<div>";
 
 
 
-			  <input type="radio" name="a" id="a" value="a">//Values must be dynamically set with php
-			   <label for="a">1947</label>
+           echo "<label>$question[Question]</label>";
 
-			  <input type="radio" name="b" id="b" value="b">
-			   <label for="b">1971</label>
+           echo "<br>";
 
-			  <input type="radio" name="c" id="c" value="c">
-			<label for="c">1952</label>
+           $answer['id']=$question['SerialNo'];
+          // $answer['answer'];
 
-			<input type="radio" name="d" id="d" value="d">
-			   <label for="d">1954</label>
+           echo "<input type='radio' name='$answer[id]'  value='$question[A]'>";
+           echo "<label for='a'>$question[A]</label>";
+
+           echo "<input type='radio' name='$answer[id]'  value='$question[B]'>";
+           echo "<label for='a'>$question[B]</label>";
+
+           echo "<input type='radio' name='$answer[id]'  value='$question[C]'>";
+           echo "<label for='a'>$question[C]</label>";
+
+           echo "<input type='radio' name='$answer[id]'  value='$question[D]'>";
+           echo "<label for='a'>$question[D]</label>";
+
+           echo "</div>";
+       }
 
 
-		</div>
 
-
-			<div  align=right>
-			  <button  class="button" style="width:60px;">Next</button>
-
-			</div>
-
-
-			<br>
-			<br>
-			<br>
-			<br>
-
+        ?>
 
 			<div align=center>
-			  <button  class="button1" style="width:100px;">Submit</button>
+			  <button  name="SubmitButton" class="button1" style="width:100px;">Submit</button>
 
 			</div>
 
 
 
-
+    </form>
 	</body>
 
 </html>

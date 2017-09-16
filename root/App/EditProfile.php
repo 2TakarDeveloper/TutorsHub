@@ -1,10 +1,10 @@
 <?php
-/*session_start();
+session_start();
 var_dump($_SESSION);
 if(!isset($_SESSION["UserId"]))
 {
     header("Location: ../index.php");
-}*/
+}
 ?>
 
 <?php require_once("../service/data_access.php") ?>
@@ -24,7 +24,9 @@ $a = ""; //areas
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
 
-
+    if(isset($_POST['cancel'])){
+        header("Location:./TutorDashBoard.php");
+    }
 
     /////////////////////
     $tutor;//this is the array that holds tutor object
