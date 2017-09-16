@@ -83,7 +83,7 @@ if(!isset($_SESSION["UserId"]))
 	</style>
 	</head>
 	<body>
-	<form method="post">
+    <form action = "" method = "post" style="overflow: hidden;">
 	
 	<div class="pp">  <h1>tutorsHUB</h1> </div>
 	
@@ -107,73 +107,31 @@ if(!isset($_SESSION["UserId"]))
 		</table>
 	
 	</div>
-    </form>
 	<hr>
 	
 		
 		<br>
-    <div style="overflow: hidden">
-        <div  style=" width:350px; border-right:2px solid #666666; margin-right:10px; display: block; ">
+        <div  style="float: left; width:350px; border-right:2px solid #666666; margin-right:10px; display: block; ">
                 <h1>PROFILE</h1>
-            <form action = "" method = "post">
+
                 <input type="submit" name="Edit Profile" value="Edit Profile" />
-            </form>
-            <form action = "" method = "post">
                 <input type="submit" name="View Profile" value="View Profile" />
-            </form>
+
         </div>
-				<br>
-				<br>
-        <div  style=" width:350px; border-right:2px solid #666666; margin-right:10px; display: block;">
+        <div style="float:left; width:600px; ">Schedule</div>
+        <div  style="float: right; width:350px; border-left:2px solid #666666; padding-left:10px; display: block;">
             <h1>EXAM</h1>
-            <form action = "" method = "post">
-                <input type="submit" name="Bangla" value="Bangla" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="English" value="English" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="Math" value="Math" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="ICT" value="ICT" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="Higher Math" value="Higher Math" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="Social Science" value="Social Science" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="Religion" value="Religion" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="Physics" value="Physics" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="Chemistry" value="Chemistry" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="Biology" value="Biology" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="Physical Exercise" value="Physical Exercise" />
-            </form>
-            <form action = "" method = "post">
-                <input type="submit" name="Career" value="Career" />
-            </form>
-				
-			  </div>
-    </div>
-			
-			
+            <input type="submit" name="Exam" value="Exam" />
+        </div>
+
+    </form>
 			<br/>
 			<br/>
 			
 
 		
 		
-			<div style="float:left; width:600px; ">Schedule</div>
+
 		
 		
 	</form>
