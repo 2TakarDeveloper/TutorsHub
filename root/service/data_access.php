@@ -1,6 +1,6 @@
 <?php
     $host="127.0.0.1";
-    $user="localhost";
+    $user="root";
     $pass="";
     $dbname="tutorshub";
     $port=3306;

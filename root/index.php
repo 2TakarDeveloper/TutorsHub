@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 
     if(isset($_POST['LogInButton'])){
-        if(ValidTutor($_POST['email'],$_POST['password']))
+        if(ValidTutor($_POST['email'],$_POST['textpass']))
         {
             $lastLogin=date_create('now')->format('Y-m-d H:i:s');
             UpdateLastLogin($_SESSION['UserId'],$lastLogin);
@@ -268,7 +268,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                         </td>
 
                         <td>
-                            Password<br/><input style="margin: 0" type="password" name="password" size="20" />
+                            Password<br/><input style="margin: 0" type="password" name="textpass" size="20" />
                         </td>
 
                         <td>
