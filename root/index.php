@@ -8,6 +8,7 @@ session_start();
 include_once("./service/data_access.php");
 include_once ("./service/TutorService.php");
 include_once ("./service/TutorInfoService.php");
+include_once ("./service/SearchInfoService.php");
 include_once ("./service/SearchingService.php");
 
 
@@ -20,9 +21,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 {
     if(isset($_POST['SearchButton'])){
 
-        //$location=$_POST['location'];
-        //$sex=$_POST['sex'];
-        //$class=$_POST['class'];
+        $location=$_POST['location'];
+        $sex=$_POST['sex'];
+        $class=$_POST['class'];
+
+
         $min=$_POST['min'];
         $max=$_POST['max'];
 
@@ -56,9 +59,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         $subjects=substr_replace($subjects, "", -1);
 
 
-        $r=GetTutorShortInfo('Mirpur','Male','11',$min,$max,$subjects,'Bangla');
+        $r=GetTutorShortInfo($location,$sex,$class,$min,$max,$subjects,'Bangla');
+        $_SESSION["SearchResults"]=$r;
 
-        var_dump($r);
+        header("Location:./App/SearchResult.php");
+
 
     }
 
@@ -337,33 +342,33 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 
         <div align="center">
-            <select>
-                <option name="location" value="Mirpur"  style="width: 130">Mirpur</option>
-                <option name="location" value="Uttara"  style="width: 130">Uttara</option>
-                <option name="location" value="Dhanmondi"  style="width: 130">Dhanmondi</option>
+            <select name="location">
+                <option value="Mirpur"  style="width: 130">Mirpur</option>
+                <option value="Uttara"  style="width: 130">Uttara</option>
+                <option value="Dhanmondi"  style="width: 130">Dhanmondi</option>
 
             </select>
 
-            <select>
-                <option name="sex" value="Male"  style="width: 130">Male</option>
-                <option name="sex" value="Female"  style="width: 130">Female</option>
-                <option name="sex" value="Any"  style="width: 130">Any</option>
+            <select name="sex">
+                <option value="Male"  style="width: 130">Male</option>
+                <option value="Female"  style="width: 130">Female</option>
+                <option value="Any"  style="width: 130">Any</option>
 
             </select>
 
-            <select>
-                <option name="class" value="1"  style="width: 130">Class 1</option>
-                <option name="class" value="2"  style="width: 130">Class 2</option>
-                <option name="class" value="3"  style="width: 130">Class 3</option>
-                <option name="class" value="4"  style="width: 130">Class 4</option>
-                <option name="class" value="5"  style="width: 130">Class 5</option>
-                <option name="class" value="6"  style="width: 130">Class 6</option>
-                <option name="class" value="7"  style="width: 130">Class 7</option>
-                <option name="class"  value="8"  style="width: 130">Class 8</option>
-                <option name="class" value="9"  style="width: 130">Class 9</option>
-                <option name="class" value="10"  style="width: 130">Class 10</option>
-                <option name="class" value="11"  style="width: 130">Class 11</option>
-                <option name="class" value="12"  style="width: 130">Class 12</option>
+            <select name="class">
+                <option value="1"  style="width: 130">Class 1</option>
+                <option value="2"  style="width: 130">Class 2</option>
+                <option value="3"  style="width: 130">Class 3</option>
+                <option value="4"  style="width: 130">Class 4</option>
+                <option value="5"  style="width: 130">Class 5</option>
+                <option value="6"  style="width: 130">Class 6</option>
+                <option value="7"  style="width: 130">Class 7</option>
+                <option value="8"  style="width: 130">Class 8</option>
+                <option value="9"  style="width: 130">Class 9</option>
+                <option value="10"  style="width: 130">Class 10</option>
+                <option value="11"  style="width: 130">Class 11</option>
+                <option value="12"  style="width: 130">Class 12</option>
 
             </select>
             <div class="salary">

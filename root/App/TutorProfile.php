@@ -1,16 +1,26 @@
 <?php
-$contact=false; //for public access contact will be true and there will be a contact window
+$contact=false;
+$userId;
 ?>
 
 <?php
 // Start the session
 session_start();
+if(isset($_SESSION['Contact'])){
+    $contact=true;
+}
 
-var_dump($_SESSION);
+if(!$contact){
+    if(!isset($_SESSION["UserId"]))
+    {
+        header("Location: ../index.php");
+    }else{
+        $userId=$_SESSION['UserId'];
+    }
 
-if(!isset($_SESSION["UserId"]))
-{
-    header("Location: ../index.php");
+}else{
+    $userId=$_SESSION["TutorID"];
+
 }
 
 ?>
@@ -27,7 +37,7 @@ if(!isset($_SESSION["UserId"]))
 //Set Coo
 
 //-----------------------------------------------------
-$tutor=getTutorbyId($_SESSION["UserId"]);
+$tutor=getTutorbyId($userId);
 $name=$tutor['Name'];
 $mail=$tutor['Email'];
 $imageUrl=$tutor['UserImage'];
@@ -38,7 +48,7 @@ $activation=$tutor['MemberSince'];;//Member since
 
 
 //--------------------------------
-$tutorSearchInfo=getSearchInfo($_SESSION['UserId']);
+$tutorSearchInfo=getSearchInfo($userId);
 $salary=$tutorSearchInfo['ExpectedSalary'];
 $gender=$tutorSearchInfo['Gender'];
 
@@ -72,7 +82,7 @@ else
 
 //--------------------------------------
 
-$tutorInfo=GetTutorInfo($_SESSION['UserId']);
+$tutorInfo=GetTutorInfo($userId);
 $status=$tutorInfo['CurrentStatus'];
 $bio=$tutorInfo['Bio'];
 
@@ -380,8 +390,8 @@ $experience=$tutorInfo['Experience'];
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td<?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Math"){ echo 'class="active"'; break;}} ?>>
-                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Math"){ echo "&#10004;"; break;}} ?>  Math </p>
+                                        <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Math"){ echo 'class="active"'; break;}} ?>>
+                                            <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Math"){ echo "&#10004;"; break;}} ?> Math </p>
                                         </td>
                                         <td <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Religion"){ echo 'class="active"'; break;}} ?>>
                                             <p><?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]=="Religion"){ echo "&#10004;"; break;}} ?> Religion </p>

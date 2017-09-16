@@ -25,16 +25,48 @@ function GetTutorShortInfo($area,$sex,$class,$minSal,$maxSal,$subjects,$medium)
             CONCAT(\",\", `PreferredSubjects`, \",\") REGEXP \",($subjects),\"
         ";
 
-    var_dump($sql);
+
 
     $result = executeSQL($sql);
 
 
-    $row=mysqli_fetch_assoc($result);
+    $value=[];
+    $i=0;
 
-    return $row;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $value[$i++]=$row['UserID'];
+
+    }
 
 
+
+    return GetTutorSearchResult($value);
+
+
+}
+
+function GetTutorSearchResult($tutorIds)
+{
+    $resultSet=[];
+    $i=0;
+
+    foreach ($tutorIds as $id)
+    {
+        $temp = getTutorbyId($id);
+        $resultSet[$i]['Id']= $id;
+        $resultSet[$i]['Name']= $temp['Name'];
+        $resultSet[$i]['UserImage']= $temp['UserImage'];
+
+        $temp=getSearchInfo($id);
+        $resultSet[$i]['Salary']=$temp['ExpectedSalary'];
+        $resultSet[$i]['Subjects']=$temp['PreferredSubjects'];
+        $resultSet[$i]['Gender']=$temp['Gender'];
+        $resultSet[$i]['Medium']=$temp['PreferredMedium'];
+        $resultSet[$i++]['Locations']=$temp['PreferredLocation'];
+
+    }
+
+    return $resultSet;
 }
 
 

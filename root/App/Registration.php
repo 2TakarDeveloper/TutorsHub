@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 NewSearchInfo($id['Id']);
                 NewTutorInfo($id['Id']);
 
-                header('../index.php');
+                header('Location:../index.php');
             }
             else{
                 echo ("Failed");
