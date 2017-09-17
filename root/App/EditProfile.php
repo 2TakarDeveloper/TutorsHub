@@ -219,7 +219,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         float: left;
     }
     .box {
-        width: 50%;
+        width: 0%;
         margin: auto;
     }
     .btn
@@ -237,6 +237,11 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     .btn:hover {
         background-color: white;
         color: black;
+    }
+    #bck
+    {
+        margin: 0;
+
     }
     input , textarea, #image
     {
@@ -380,6 +385,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     <div class="container">
 
         <div class="wrap">
+            <div style="width: 50px; height: 50px;top: -20px;"><input class="btn" id="bck" type="submit" name="cancel" value="Back"></div>
 
             <h1 align="Center">Edit Profile</h1>
             <hr>
@@ -535,7 +541,6 @@ if($_SERVER['REQUEST_METHOD']=="POST")
             <br>
             <br>
             <div class="box">
-                <input class="btn" type="submit" name="cancel" value="Back">
                 <input class="btn" type="submit" value="Save">
             </div>
         </div>
