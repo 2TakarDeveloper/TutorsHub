@@ -10,7 +10,8 @@ include_once ("./service/TutorService.php");
 include_once ("./service/TutorInfoService.php");
 include_once ("./service/SearchInfoService.php");
 include_once ("./service/SearchingService.php");
-
+include_once ("./service/ExamDataService.php");
+include_once ("./service/LocationService.php");
 
 ?>
 
@@ -328,11 +329,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                     </tr>
                 </table>
             </div>
-            <hr>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+
         </header>
 
         <div align="center">
@@ -343,9 +340,17 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
         <div align="center">
             <select name="location">
-                <option value="Mirpur"  style="width: 130">Mirpur</option>
-                <option value="Uttara"  style="width: 130">Uttara</option>
-                <option value="Dhanmondi"  style="width: 130">Dhanmondi</option>
+
+                <?php
+                $locations=  GetAllLocations();
+                foreach ($locations as $location){
+                    echo "<option value=$location[Location]>$location[Location]</option>";
+                }
+
+
+                ?>
+
+
 
             </select>
 
@@ -357,23 +362,17 @@ if($_SERVER['REQUEST_METHOD']=="POST")
             </select>
 
             <select name="class">
-                <option value="1"  style="width: 130">Class 1</option>
-                <option value="2"  style="width: 130">Class 2</option>
-                <option value="3"  style="width: 130">Class 3</option>
-                <option value="4"  style="width: 130">Class 4</option>
-                <option value="5"  style="width: 130">Class 5</option>
-                <option value="6"  style="width: 130">Class 6</option>
-                <option value="7"  style="width: 130">Class 7</option>
-                <option value="8"  style="width: 130">Class 8</option>
-                <option value="9"  style="width: 130">Class 9</option>
-                <option value="10"  style="width: 130">Class 10</option>
-                <option value="11"  style="width: 130">Class 11</option>
-                <option value="12"  style="width: 130">Class 12</option>
+                <?php
+
+                for($i=1;$i<=12;$i++){
+                    echo "<option value= $i style='width: 130px'>Class $i</option>";
+                }
+                ?>
 
             </select>
             <div class="salary">
-                <label>Salary</label>  min<input type="text" name="min" size="5"  />-
-                <input type="text" name="max" size="5"  />max
+                <label>Salary</label>  min<input type="text" name="min" size="5" value="3000" />-
+                <input type="text" name="max" size="5"  value="10000"/>max
             </div>
 
 
@@ -384,37 +383,16 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
         <div align="center">
             <ul>
-                <table>
+                <table style="padding-left: 13%">
                     <tr>
                         <td>Subjects:</td>
                     </tr>
-
-
-                    <tr>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="Bangla" value="bangla">Bangla<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="English" value="english">English<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="Math" value="math">Math<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="ICT" value="ict">ICT<div class="control__indicator"></div></label></td>
-
-                    </tr>
-
-
-                    <tr>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="Religion" value="religion">Religion<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="physics" value="physics">Physics<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="Chemistry" value="chemistry">Chemistry<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="Biology" value="biology">Biology<div class="control__indicator"></div></label></td>
-
-                    </tr>
-
-                    <tr>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="SocialScience" value="science">Social Science<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="HigherMath" value="higherMath">Higher Math<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="career" value="career">Career<div class="control__indicator"></div></label></td>
-                        <td  class="control-group"><label class="control control--checkbox"><input type="checkbox" name="PhysicalExercise" value="physical">Physical Exercise<div class="control__indicator"></div></label></td>
-
-                    </tr>
-
+                    <?php
+                      $subjects = GetAllSubjectNames();//Later make table of  subjects and service class
+                      foreach ($subjects as $subject){
+                          echo "<td  class='control-group'><label class='control control--checkbox'><input type='checkbox' name=$subject[ExamName] value=$subject[ExamName]>$subject[ExamName]<div class='control__indicator'></div></label></td>";
+                      }
+                    ?>
                 </table>
 
             </ul>

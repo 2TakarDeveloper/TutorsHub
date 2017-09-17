@@ -59,16 +59,38 @@ function AddToUserExamTable($examName){
 
 
 
+function GetAllSubjectNames(){
+    //return exam Names from Exam Table
+    $sql = "SELECT ExamName FROM `exam` WHERE SerialNo>=1 AND SerialNo<=12";
+    $result = executeSQL($sql);
+    $value=[];
+    $i=0;
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $value[$i++]=$row;
+
+    }
+
+    return $value;
+}
+
 function GetAllExamNames(){
     //return exam Names from Exam Table
-
-    $sql = "SELECT * FROM exam";
-
+    $sql = "SELECT ExamName FROM `exam`";
     $result = executeSQL($sql);
+    $value=[];
+    $i=0;
 
-    $row=mysqli_fetch_assoc($result);
-    return $row;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $value[$i++]=$row;
+
+    }
+
+    return $value;
 }
+
+
+
 
 
 function GetExamQuestionByName($examName){

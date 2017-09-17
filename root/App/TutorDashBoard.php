@@ -1,26 +1,45 @@
 <?php
-/*// Start the session
+// Start the session
 session_start();
 $_SESSION['Contact']=false;
 
-
+var_dump($_POST);
+var_dump($_SESSION);
 if(!isset($_SESSION["UserId"]))
 {
-
     header("Location: ../index.php");
-}*/
+}
+
+if(isset($_POST['ViewProfile'])){
+    header("Location: ./TutorProfile.php");
+}
+
+if(isset($_POST['EditProfile'])){
+    header("Location: ./EditProfile.php");
+}
+
+
+if(isset($_POST['LogOutButton'])){
+    session_destroy();
+    header("Location: ../index.php");
+
+}
+
 
 ?>
 
 <?php require_once("../service/data_access.php") ?>
 <?php require_once("../service/TutorService.php") ?>
-
+<?php require_once("../service/ExamDataService.php") ?>
 
 <?php
 
-    $tutor=getTutorbyId($_SESSION['UserId']);
+$tutor=getTutorbyId($_SESSION['UserId']);
 
-	$mail=$tutor['Email'];
+$mail=$tutor['Email'];
+
+
+
 ?>
 <html>
 
@@ -98,9 +117,8 @@ if(!isset($_SESSION["UserId"]))
 			
 			
 			<td>
-			 <input type="button" onClick="location.href='../index.php'" value='LogOut'>
-			
-			</td>
+                <input type="submit" name="LogOutButton" value="Log Out" />
+            </td>
 		
 		</tr>
 		
@@ -114,14 +132,23 @@ if(!isset($_SESSION["UserId"]))
         <div  style="float: left; width:350px; border-right:2px solid #666666; margin-right:10px; display: block; ">
                 <h1>PROFILE</h1>
 
-                <input type="submit" name="Edit Profile" value="Edit Profile" />
-                <input type="submit" name="View Profile" value="View Profile" />
+                <input type="submit" name="EditProfile" value="Edit Profile" />
+                <input type="submit" name="ViewProfile" value="View Profile" />
 
         </div>
         <div style="float:left; width:600px; ">Schedule</div>
         <div  style="float: right; width:350px; border-left:2px solid #666666; padding-left:10px; display: block;">
             <h1>EXAM</h1>
-            <input type="submit" name="Exam" value="Exam" />
+            <?php
+            $examNames=GetAllExamNames();
+
+            foreach ($examNames as $examName){
+                echo "<input type='submit' name=$examName[ExamName] value=$examName[ExamName] />";
+
+            }
+            ?>
+
+
         </div>
 
     </form>
