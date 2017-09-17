@@ -114,7 +114,7 @@ function GetExamQuestionByName($examName){
 
 }
 
-function validateExamPaper($examAnswers,$examName){
+function validateExamPaper($examAnswers,$examName,$userID){
     //Will instruct later. no need to implement it now
     $score=0;
     foreach ($examAnswers as $examAnswer){
@@ -128,7 +128,7 @@ function validateExamPaper($examAnswers,$examName){
 
 
     }
-
+    UpdateUserExamData($userID,$examName,$score);
 
     return $score;
 }
@@ -144,5 +144,26 @@ function GetTutorExamResultALL($UserId){
     //This will be required to allow tutors to choose which subjects they can pick
 }
 
+/////
+/// ---------------------------------------------------
+///
+///
+function UpdateUserExamData($UserID,$ExamName,$Value){
+
+    $sql = "UPDATE `userexaminfo` SET `$ExamName`='$Value' WHERE UserID=$UserID AND `$ExamName` <$Value";
+    //var_dump($sql);
+    $result = executeSQL($sql);
 
 
+    return $result;
+
+}
+
+
+
+function NewTutorExamData($id){
+    //this function will take a tutorID object and add that to database
+    $sql = "INSERT INTO `userexaminfo`(`UserId`) VALUES('$id')";
+    $result = executeSQL($sql);
+    return $result;
+}

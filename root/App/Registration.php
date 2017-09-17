@@ -2,6 +2,7 @@
 <?php require_once("../service/TutorService.php") ?>
 <?php require_once("../service/TutorInfoService.php") ?>
 <?php require_once("../service/SearchInfoService.php") ?>
+<?php require_once("../service/ExamDataService.php") ?>
 
 <?php
 
@@ -26,7 +27,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
                 NewSearchInfo($id['Id']);
                 NewTutorInfo($id['Id']);
-
+                NewTutorExamData($id['Id']);
                 header('Location:../index.php');
             }
             else{

@@ -7,7 +7,7 @@
  */
 function NewSearchInfo($tutorID){
     //this function will take a tutorID object and add that to database
-    $sql = "INSERT INTO searchinfo(UserId) VALUES($tutorID)";
+    $sql = "INSERT INTO `searchinfo`(`UserId`) VALUES($tutorID)";
     $result = executeSQL($sql);
     return $result;
 }

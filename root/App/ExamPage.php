@@ -6,7 +6,7 @@
 
  session_start();
  $examName=$_SESSION['ExamName'];
- $examName="Bangla";
+
  $_SESSION['questions']=GetExamQuestionByName($examName);
 
 
@@ -27,8 +27,16 @@ if($_SERVER['REQUEST_METHOD']=="POST")
         }
 
 
-        var_dump( validateExamPaper($examAnswers,$examName));
-       // header("Location: ./TutorDashBoard.php");
+
+
+    $message = 'You Got: '.validateExamPaper($examAnswers,$examName,$_SESSION['UserId']);;
+
+    echo "<SCRIPT>
+    alert('$message');
+    window.location.replace('./TutorDashBoard.php');
+    </SCRIPT>";
+
+
 
     }
 
@@ -119,7 +127,7 @@ div.pp
            $answer['id']=$question['SerialNo'];
           // $answer['answer'];
 
-           echo "<input type='radio' name='$answer[id]'  value='$question[A]'>";
+           echo "<input type='radio' name='$answer[id]'  value='$question[A]' checked='checked'>";
            echo "<label for='a'>$question[A]</label>";
 
            echo "<input type='radio' name='$answer[id]'  value='$question[B]'>";

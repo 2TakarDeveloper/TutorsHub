@@ -1,10 +1,17 @@
+<?php require_once("../service/data_access.php") ?>
+<?php require_once("../service/TutorService.php") ?>
+<?php require_once("../service/ExamDataService.php") ?>
+
+
 <?php
 // Start the session
 session_start();
 $_SESSION['Contact']=false;
 
-var_dump($_POST);
-var_dump($_SESSION);
+
+
+
+
 if(!isset($_SESSION["UserId"]))
 {
     header("Location: ../index.php");
@@ -24,13 +31,22 @@ if(isset($_POST['LogOutButton'])){
     header("Location: ../index.php");
 
 }
+$examNames=GetAllExamNames();
+foreach ($examNames as $examName){
+
+    if(isset($_POST[$examName['ExamName']])){
+        $_SESSION['ExamName']=$examName['ExamName'];
+        header("Location: ./ExamPage.php");
+    }
+
+}
+
+
 
 
 ?>
 
-<?php require_once("../service/data_access.php") ?>
-<?php require_once("../service/TutorService.php") ?>
-<?php require_once("../service/ExamDataService.php") ?>
+
 
 <?php
 
