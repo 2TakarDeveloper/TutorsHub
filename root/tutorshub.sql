@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2017 at 11:41 AM
+-- Generation Time: Sep 20, 2017 at 06:31 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `tutorshub`
 --
+CREATE DATABASE IF NOT EXISTS `tutorshub` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `tutorshub`;
 
 -- --------------------------------------------------------
 
@@ -28,14 +30,15 @@ SET time_zone = "+00:00";
 -- Table structure for table `bangla`
 --
 
-CREATE TABLE `bangla` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `bangla` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -44,14 +47,15 @@ CREATE TABLE `bangla` (
 -- Table structure for table `biology`
 --
 
-CREATE TABLE `biology` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `biology` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -60,14 +64,15 @@ CREATE TABLE `biology` (
 -- Table structure for table `career`
 --
 
-CREATE TABLE `career` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `career` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -76,14 +81,15 @@ CREATE TABLE `career` (
 -- Table structure for table `chemistry`
 --
 
-CREATE TABLE `chemistry` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `chemistry` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -92,14 +98,15 @@ CREATE TABLE `chemistry` (
 -- Table structure for table `english`
 --
 
-CREATE TABLE `english` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `english` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -108,10 +115,12 @@ CREATE TABLE `english` (
 -- Table structure for table `exam`
 --
 
-CREATE TABLE `exam` (
-  `SerialNo` int(11) NOT NULL,
-  `ExamName` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `exam` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
+  `ExamName` varchar(30) NOT NULL,
+  PRIMARY KEY (`SerialNo`),
+  UNIQUE KEY `ExamName` (`ExamName`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exam`
@@ -137,14 +146,15 @@ INSERT INTO `exam` (`SerialNo`, `ExamName`) VALUES
 -- Table structure for table `highermath`
 --
 
-CREATE TABLE `highermath` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `highermath` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -153,15 +163,16 @@ CREATE TABLE `highermath` (
 -- Table structure for table `ict`
 --
 
-CREATE TABLE `ict` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ict` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ict`
@@ -178,10 +189,11 @@ INSERT INTO `ict` (`SerialNo`, `Question`, `A`, `B`, `C`, `D`, `Answer`) VALUES
 -- Table structure for table `location`
 --
 
-CREATE TABLE `location` (
-  `id` int(11) NOT NULL,
-  `Location` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `location` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Location` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `location`
@@ -210,15 +222,16 @@ INSERT INTO `location` (`id`, `Location`) VALUES
 -- Table structure for table `math`
 --
 
-CREATE TABLE `math` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `math` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `math`
@@ -235,14 +248,15 @@ INSERT INTO `math` (`SerialNo`, `Question`, `A`, `B`, `C`, `D`, `Answer`) VALUES
 -- Table structure for table `physicalexercise`
 --
 
-CREATE TABLE `physicalexercise` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `physicalexercise` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -251,15 +265,16 @@ CREATE TABLE `physicalexercise` (
 -- Table structure for table `physics`
 --
 
-CREATE TABLE `physics` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `physics` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `physics`
@@ -276,14 +291,15 @@ INSERT INTO `physics` (`SerialNo`, `Question`, `A`, `B`, `C`, `D`, `Answer`) VAL
 -- Table structure for table `religion`
 --
 
-CREATE TABLE `religion` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `religion` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -292,8 +308,8 @@ CREATE TABLE `religion` (
 -- Table structure for table `searchinfo`
 --
 
-CREATE TABLE `searchinfo` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `searchinfo` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `UserId` int(11) NOT NULL,
   `Gender` varchar(20) DEFAULT NULL,
   `Availability` tinyint(1) DEFAULT NULL,
@@ -301,8 +317,10 @@ CREATE TABLE `searchinfo` (
   `PreferredSubjects` varchar(300) DEFAULT NULL,
   `PreferredClasses` varchar(300) DEFAULT NULL,
   `PreferredMedium` varchar(50) DEFAULT NULL,
-  `ExpectedSalary` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ExpectedSalary` double DEFAULT NULL,
+  PRIMARY KEY (`SerialNo`),
+  KEY `UserId` (`UserId`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `searchinfo`
@@ -323,14 +341,15 @@ INSERT INTO `searchinfo` (`SerialNo`, `UserId`, `Gender`, `Availability`, `Prefe
 -- Table structure for table `socialscience`
 --
 
-CREATE TABLE `socialscience` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `socialscience` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `Question` varchar(10000) NOT NULL,
   `A` varchar(100) NOT NULL,
   `B` varchar(100) NOT NULL,
   `C` varchar(100) NOT NULL,
   `D` varchar(100) NOT NULL,
-  `Answer` varchar(100) NOT NULL
+  `Answer` varchar(100) NOT NULL,
+  PRIMARY KEY (`SerialNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -339,15 +358,17 @@ CREATE TABLE `socialscience` (
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
-  `Id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) DEFAULT NULL,
   `Email` varchar(30) NOT NULL,
   `Password` varchar(30) NOT NULL,
   `UserImage` varchar(10000) DEFAULT NULL,
   `MemberSince` date NOT NULL,
-  `UserType` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `UserType` varchar(20) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Email` (`Email`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -368,8 +389,8 @@ INSERT INTO `user` (`Id`, `Name`, `Email`, `Password`, `UserImage`, `MemberSince
 -- Table structure for table `userexaminfo`
 --
 
-CREATE TABLE `userexaminfo` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `userexaminfo` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `UserId` int(11) NOT NULL,
   `Bangla` tinyint(1) DEFAULT NULL,
   `English` tinyint(1) DEFAULT NULL,
@@ -382,8 +403,9 @@ CREATE TABLE `userexaminfo` (
   `Chemistry` tinyint(1) DEFAULT NULL,
   `Biology` tinyint(1) DEFAULT NULL,
   `Math` tinyint(1) DEFAULT NULL,
-  `PhysicalExercise` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `PhysicalExercise` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `userexaminfo`
@@ -404,8 +426,8 @@ INSERT INTO `userexaminfo` (`SerialNo`, `UserId`, `Bangla`, `English`, `HigherMa
 -- Table structure for table `userinfo`
 --
 
-CREATE TABLE `userinfo` (
-  `SerialNo` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `userinfo` (
+  `SerialNo` int(11) NOT NULL AUTO_INCREMENT,
   `TutorId` int(11) NOT NULL,
   `MobileNo` varchar(20) DEFAULT NULL,
   `Address` varchar(100) DEFAULT NULL,
@@ -413,8 +435,9 @@ CREATE TABLE `userinfo` (
   `Bio` varchar(500) DEFAULT NULL,
   `LastLogin` datetime DEFAULT NULL,
   `Level` int(11) DEFAULT NULL,
-  `Experience` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Experience` int(11) DEFAULT NULL,
+  PRIMARY KEY (`SerialNo`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `userinfo`
@@ -429,215 +452,6 @@ INSERT INTO `userinfo` (`SerialNo`, `TutorId`, `MobileNo`, `Address`, `CurrentSt
 (13, 14, NULL, NULL, NULL, NULL, NULL, 1, 0),
 (14, 15, NULL, NULL, NULL, NULL, NULL, 1, 0);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `bangla`
---
-ALTER TABLE `bangla`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `biology`
---
-ALTER TABLE `biology`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `career`
---
-ALTER TABLE `career`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `chemistry`
---
-ALTER TABLE `chemistry`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `english`
---
-ALTER TABLE `english`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `exam`
---
-ALTER TABLE `exam`
-  ADD PRIMARY KEY (`SerialNo`),
-  ADD UNIQUE KEY `ExamName` (`ExamName`);
-
---
--- Indexes for table `highermath`
---
-ALTER TABLE `highermath`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `ict`
---
-ALTER TABLE `ict`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `location`
---
-ALTER TABLE `location`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `math`
---
-ALTER TABLE `math`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `physicalexercise`
---
-ALTER TABLE `physicalexercise`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `physics`
---
-ALTER TABLE `physics`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `religion`
---
-ALTER TABLE `religion`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `searchinfo`
---
-ALTER TABLE `searchinfo`
-  ADD PRIMARY KEY (`SerialNo`),
-  ADD KEY `UserId` (`UserId`);
-
---
--- Indexes for table `socialscience`
---
-ALTER TABLE `socialscience`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`Id`),
-  ADD UNIQUE KEY `Email` (`Email`);
-
---
--- Indexes for table `userexaminfo`
---
-ALTER TABLE `userexaminfo`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- Indexes for table `userinfo`
---
-ALTER TABLE `userinfo`
-  ADD PRIMARY KEY (`SerialNo`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `bangla`
---
-ALTER TABLE `bangla`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `biology`
---
-ALTER TABLE `biology`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `career`
---
-ALTER TABLE `career`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `chemistry`
---
-ALTER TABLE `chemistry`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `english`
---
-ALTER TABLE `english`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `exam`
---
-ALTER TABLE `exam`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT for table `highermath`
---
-ALTER TABLE `highermath`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `ict`
---
-ALTER TABLE `ict`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `location`
---
-ALTER TABLE `location`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
---
--- AUTO_INCREMENT for table `math`
---
-ALTER TABLE `math`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `physicalexercise`
---
-ALTER TABLE `physicalexercise`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `physics`
---
-ALTER TABLE `physics`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `religion`
---
-ALTER TABLE `religion`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `searchinfo`
---
-ALTER TABLE `searchinfo`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT for table `socialscience`
---
-ALTER TABLE `socialscience`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT for table `userexaminfo`
---
-ALTER TABLE `userexaminfo`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `userinfo`
---
-ALTER TABLE `userinfo`
-  MODIFY `SerialNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- Constraints for dumped tables
 --
