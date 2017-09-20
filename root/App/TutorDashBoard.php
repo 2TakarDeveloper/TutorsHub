@@ -25,6 +25,10 @@ if(isset($_POST['EditProfile'])){
     header("Location: ./EditProfile.php");
 }
 
+if(isset($_POST['ViewResult'])){
+    header("Location: ./TutorExamResultProfile.php");
+}
+
 
 if(isset($_POST['LogOutButton'])){
     session_destroy();
@@ -150,6 +154,7 @@ $mail=$tutor['Email'];
 
                 <input type="submit" name="EditProfile" value="Edit Profile" />
                 <input type="submit" name="ViewProfile" value="View Profile" />
+                <input type="submit" name="ViewResult" value="View Result" />
 
         </div>
         <div style="float:left; width:600px; ">Schedule</div>

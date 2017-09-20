@@ -31,9 +31,9 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
     $message = 'You Got: '.validateExamPaper($examAnswers,$examName,$_SESSION['UserId']);;
 
-    echo "<SCRIPT>
+        echo "<SCRIPT>
     alert('$message');
-    window.location.replace('./TutorDashBoard.php');
+    //window.location.replace('./TutorDashBoard.php');
     </SCRIPT>";
 
 

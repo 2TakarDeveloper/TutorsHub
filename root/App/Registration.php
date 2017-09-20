@@ -28,7 +28,20 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                 NewSearchInfo($id['Id']);
                 NewTutorInfo($id['Id']);
                 NewTutorExamData($id['Id']);
-                header('Location:../index.php');
+
+                $message = 'Your account has been created!';
+
+                echo "<SCRIPT>
+                    alert('$message');
+                    window.location.replace('../index.php');
+                    </SCRIPT>";
+
+
+
+
+
+
+
             }
             else{
                 echo ("Failed");

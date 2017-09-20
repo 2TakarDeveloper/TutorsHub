@@ -500,10 +500,19 @@ if($_SERVER['REQUEST_METHOD']=="POST")
                         <?php
                         $subjects=  GetAllSubjectNames();
                         foreach ($subjects as $s){
-                            echo "<td  class='control-group'><label class='control control--checkbox'>$s[ExamName]<input type='checkbox' name=$s[ExamName] value=$s[ExamName]";?>
-                            <?php for($i=0;$i<sizeof($subject);$i++){ if($subject[$i]==$s['ExamName']){ echo "checked='checked'"; break;}} ?>
-                            <?php echo
-                            "><div class='control__indicator'></div></label></td>";
+                            if(GetTutorExamResult($_SESSION['UserId'],$s['ExamName'])) {
+                                echo "<td  class='control-group'><label class='control control--checkbox'>$s[ExamName]<input type='checkbox' name=$s[ExamName] value=$s[ExamName]"; ?>
+                                <?php for ($i = 0; $i < sizeof($subject); $i++) {
+                                    if ($subject[$i] == $s['ExamName'])//modify later
+                                    {
+                                        echo "checked='checked'";
+                                        break;
+                                    }
+                                }
+                                ?>
+                                <?php echo
+                                "><div class='control__indicator'></div></label></td>";
+                            }
                         }
                         ?>
                     </tr>

@@ -137,11 +137,28 @@ function validateExamPaper($examAnswers,$examName,$userID){
 function GetTutorExamResult($UserId,$ExamName){
     //Return true or false by searching userExamResultTable using userID and ExamnameColumn.
     //we will need this at some point just define it.
+
+    $sql = "SELECT `$ExamName` from `userexaminfo` where `UserId`=$UserId AND `$ExamName`>0 ";
+
+    $result = executeSQL($sql);
+    $row=mysqli_fetch_assoc($result);
+
+    //var_dump($row);
+
+    return $row;
 }
 
 function GetTutorExamResultALL($UserId){
     //Return all columns from userExamResultTable using userID
     //This will be required to allow tutors to choose which subjects they can pick
+
+    $sql = "SELECT * from `userexaminfo` where `UserId`=$UserId ";
+
+    $result = executeSQL($sql);
+    $row=mysqli_fetch_assoc($result);
+
+    return $row;
+
 }
 
 /////
@@ -151,7 +168,7 @@ function GetTutorExamResultALL($UserId){
 function UpdateUserExamData($UserID,$ExamName,$Value){
 
     $sql = "UPDATE `userexaminfo` SET `$ExamName`='$Value' WHERE UserID=$UserID AND `$ExamName` <$Value";
-    //var_dump($sql);
+    var_dump($sql);
     $result = executeSQL($sql);
 
 
